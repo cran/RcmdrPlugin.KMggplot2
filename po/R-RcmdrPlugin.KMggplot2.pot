@@ -1,0 +1,775 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: RcmdrPlugin.KMggplot2 0.0-3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-07-27 17:17+0900\n"
+"PO-Revision-Date: 2011-07-27 17:18+0900\n"
+"Last-Translator: Triad sou. <triadsou@gmail.com>\n"
+"Language-Team: Triad sou. <triadsou@gmail.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: kmg2_gettextRcmdr;gettextRcmdr;gettext\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-Language: Japanese\n"
+"X-Poedit-Country: JAPAN\n"
+"X-Poedit-SourceCharset: Shift-JIS\n"
+"X-Poedit-SearchPath-0: ./R\n"
+"X-Poedit-SearchPath-1: ./inst/etc\n"
+
+#: R/kmg2_box.R:9
+msgid "Box plot / Errorbar plot"
+msgstr ""
+
+#: R/kmg2_box.R:20
+#: R/kmg2_contour.R:19
+#: R/kmg2_line.R:20
+#: R/kmg2_scatter.R:19
+msgid "X variable (pick one)"
+msgstr ""
+
+#: R/kmg2_box.R:21
+#: R/kmg2_contour.R:20
+#: R/kmg2_line.R:21
+#: R/kmg2_qq.R:20
+#: R/kmg2_scatter.R:20
+msgid "Y variable (pick one)"
+msgstr ""
+
+#: R/kmg2_box.R:22
+#: R/kmg2_discretebar.R:20
+#: R/kmg2_hist.R:21
+#: R/kmg2_km.R:22
+#: R/kmg2_line.R:22
+#: R/kmg2_pie.R:20
+#: R/kmg2_scatter.R:21
+msgid "Stratum variable"
+msgstr ""
+
+#: R/kmg2_box.R:30
+#: R/kmg2_contour.R:29
+#: R/kmg2_discretebar.R:28
+#: R/kmg2_dist.R:35
+#: R/kmg2_dist.R:198
+#: R/kmg2_hist.R:32
+#: R/kmg2_km.R:30
+#: R/kmg2_line.R:30
+#: R/kmg2_qq.R:31
+#: R/kmg2_scatter.R:29
+msgid "Horizontal axis label"
+msgstr ""
+
+#: R/kmg2_box.R:31
+#: R/kmg2_contour.R:30
+#: R/kmg2_discretebar.R:29
+#: R/kmg2_dist.R:36
+#: R/kmg2_dist.R:199
+#: R/kmg2_hist.R:33
+#: R/kmg2_km.R:31
+#: R/kmg2_line.R:31
+#: R/kmg2_qq.R:32
+#: R/kmg2_scatter.R:30
+msgid "Vertical axis label"
+msgstr ""
+
+#: R/kmg2_box.R:32
+#: R/kmg2_contour.R:32
+#: R/kmg2_discretebar.R:30
+#: R/kmg2_dist.R:37
+#: R/kmg2_dist.R:200
+#: R/kmg2_hist.R:34
+#: R/kmg2_km.R:33
+#: R/kmg2_line.R:33
+#: R/kmg2_pie.R:29
+#: R/kmg2_qq.R:33
+#: R/kmg2_scatter.R:32
+#: R/kmg2_scattermatrix.R:28
+msgid "Title"
+msgstr ""
+
+#: R/kmg2_box.R:39
+msgid "Box plot"
+msgstr ""
+
+#: R/kmg2_box.R:40
+#: R/kmg2_box.R:41
+#: R/kmg2_calls.R:78
+#: R/kmg2_calls.R:254
+#: R/kmg2_line.R:51
+msgid "Mean"
+msgstr ""
+
+#: R/kmg2_box.R:40
+#: R/kmg2_calls.R:79
+msgid "S.D."
+msgstr ""
+
+#: R/kmg2_box.R:41
+msgid "S.D. (bar)"
+msgstr ""
+
+#: R/kmg2_box.R:42
+msgid "95% C.I. (t distribution)"
+msgstr ""
+
+#: R/kmg2_box.R:43
+msgid "95% C.I. (bootstrap)"
+msgstr ""
+
+#: R/kmg2_box.R:44
+msgid "Plot type"
+msgstr ""
+
+#: R/kmg2_box.R:52
+msgid "Flipped coordinates"
+msgstr ""
+
+#: R/kmg2_box.R:53
+msgid "Add data point"
+msgstr ""
+
+#: R/kmg2_box.R:54
+msgid "Annotation of plot type (except box plot)"
+msgstr ""
+
+#: R/kmg2_box.R:55
+#: R/kmg2_contour.R:42
+#: R/kmg2_hist.R:63
+msgid "Options"
+msgstr ""
+
+#: R/kmg2_box.R:89
+#: R/kmg2_contour.R:75
+#: R/kmg2_line.R:87
+#: R/kmg2_scatter.R:77
+msgid "No x variable selected."
+msgstr ""
+
+#: R/kmg2_box.R:93
+#: R/kmg2_contour.R:79
+#: R/kmg2_line.R:91
+#: R/kmg2_qq.R:86
+#: R/kmg2_scatter.R:81
+msgid "No y variable selected."
+msgstr ""
+
+#: R/kmg2_calls.R:80
+msgid "Plot normal distiribution"
+msgstr ""
+
+#: R/kmg2_calls.R:91
+#: R/kmg2_calls.R:103
+msgid "df"
+msgstr ""
+
+#: R/kmg2_calls.R:92
+msgid "Plot t distiribution"
+msgstr ""
+
+#: R/kmg2_calls.R:104
+msgid "Plot chi-square distiribution"
+msgstr ""
+
+#: R/kmg2_calls.R:116
+msgid "Numerator df"
+msgstr ""
+
+#: R/kmg2_calls.R:117
+msgid "Denominator df"
+msgstr ""
+
+#: R/kmg2_calls.R:118
+msgid "Plot F distiribution"
+msgstr ""
+
+#: R/kmg2_calls.R:129
+msgid "rate"
+msgstr ""
+
+#: R/kmg2_calls.R:130
+msgid "Plot exponential distiribution"
+msgstr ""
+
+#: R/kmg2_calls.R:142
+msgid "Minimum"
+msgstr ""
+
+#: R/kmg2_calls.R:143
+msgid "Maximum"
+msgstr ""
+
+#: R/kmg2_calls.R:144
+msgid "Plot uniform distiribution"
+msgstr ""
+
+#: R/kmg2_calls.R:156
+msgid "Shape 1"
+msgstr ""
+
+#: R/kmg2_calls.R:157
+msgid "Shape 2"
+msgstr ""
+
+#: R/kmg2_calls.R:158
+msgid "Plot beta distiribution"
+msgstr ""
+
+#: R/kmg2_calls.R:170
+#: R/kmg2_calls.R:184
+msgid "Location"
+msgstr ""
+
+#: R/kmg2_calls.R:171
+#: R/kmg2_calls.R:185
+#: R/kmg2_calls.R:227
+msgid "Scale"
+msgstr ""
+
+#: R/kmg2_calls.R:172
+msgid "Plot cauchy distiribution"
+msgstr ""
+
+#: R/kmg2_calls.R:186
+msgid "Plot logistic distiribution"
+msgstr ""
+
+#: R/kmg2_calls.R:198
+msgid "Mean (log scale)"
+msgstr ""
+
+#: R/kmg2_calls.R:199
+msgid "S.D. (log scale)"
+msgstr ""
+
+#: R/kmg2_calls.R:200
+msgid "Plot log-normal distiribution"
+msgstr ""
+
+#: R/kmg2_calls.R:212
+#: R/kmg2_calls.R:226
+msgid "Shape"
+msgstr ""
+
+#: R/kmg2_calls.R:213
+msgid "Rate (inverse scale)"
+msgstr ""
+
+#: R/kmg2_calls.R:214
+msgid "Plot gamma distiribution"
+msgstr ""
+
+#: R/kmg2_calls.R:228
+msgid "Plot weibull distiribution"
+msgstr ""
+
+#: R/kmg2_calls.R:240
+msgid "Binomial trials"
+msgstr ""
+
+#: R/kmg2_calls.R:241
+#: R/kmg2_calls.R:267
+#: R/kmg2_calls.R:296
+msgid "Probability of success"
+msgstr ""
+
+#: R/kmg2_calls.R:242
+msgid "Plot binomial distiribution"
+msgstr ""
+
+#: R/kmg2_calls.R:255
+msgid "Plot poisson distiribution"
+msgstr ""
+
+#: R/kmg2_calls.R:268
+msgid "Plot geometric distiribution"
+msgstr ""
+
+#: R/kmg2_calls.R:280
+msgid "m (number of white balls in the urn)"
+msgstr ""
+
+#: R/kmg2_calls.R:281
+msgid "n (number of black balls in the urn)"
+msgstr ""
+
+#: R/kmg2_calls.R:282
+msgid "k (number of balls drawn from the urn)"
+msgstr ""
+
+#: R/kmg2_calls.R:283
+msgid "Plot hypergeometric distiribution"
+msgstr ""
+
+#: R/kmg2_calls.R:295
+msgid "Target number of success"
+msgstr ""
+
+#: R/kmg2_calls.R:297
+msgid "Plot negative binomial distiribution"
+msgstr ""
+
+#: R/kmg2_contour.R:9
+msgid "Contour plot"
+msgstr ""
+
+#: R/kmg2_contour.R:21
+msgid "Z variable (pick one)"
+msgstr ""
+
+#: R/kmg2_contour.R:31
+#: R/kmg2_km.R:32
+#: R/kmg2_line.R:32
+#: R/kmg2_pie.R:28
+#: R/kmg2_scatter.R:31
+msgid "Legend label"
+msgstr ""
+
+#: R/kmg2_contour.R:39
+#: R/kmg2_km.R:40
+#: R/kmg2_line.R:50
+#: R/kmg2_scatter.R:39
+#: R/kmg2_scattermatrix.R:35
+msgid "None"
+msgstr ""
+
+#: R/kmg2_contour.R:40
+msgid "Coloured lines"
+msgstr ""
+
+#: R/kmg2_contour.R:41
+#: R/kmg2_hist.R:62
+msgid "Heat map"
+msgstr ""
+
+#: R/kmg2_contour.R:83
+msgid "No z variable selected."
+msgstr ""
+
+#: R/kmg2_contour.R:170
+msgid "Contour plot failed.  This data may be inappropriate."
+msgstr ""
+
+#: R/kmg2_contour.R:171
+#: R/kmg2_km.R:142
+#: R/kmg2_qq.R:138
+#: R/kmg2_qq.R:169
+#: R/kmg2_qq.R:200
+#: R/kmg2_qq.R:230
+#: R/kmg2_qq.R:261
+#: R/kmg2_scatter.R:197
+#: R/kmg2_scattermatrix.R:145
+msgid "Error"
+msgstr ""
+
+#: R/kmg2_discretebar.R:9
+msgid "Bar chart for discrete variables"
+msgstr ""
+
+#: R/kmg2_discretebar.R:19
+#: R/kmg2_hist.R:20
+#: R/kmg2_pie.R:19
+msgid "Variable (pick one)"
+msgstr ""
+
+#: R/kmg2_discretebar.R:59
+#: R/kmg2_hist.R:99
+#: R/kmg2_pie.R:57
+msgid "No variable selected."
+msgstr ""
+
+#: R/kmg2_dist.R:9
+#: R/kmg2_dist.R:172
+msgid "Plot distiribution"
+msgstr ""
+
+#: R/kmg2_dist.R:44
+msgid "Plot density function"
+msgstr ""
+
+#: R/kmg2_dist.R:45
+#: R/kmg2_dist.R:208
+msgid "Plot distribution function"
+msgstr ""
+
+#: R/kmg2_dist.R:46
+#: R/kmg2_dist.R:209
+msgid "Function type"
+msgstr ""
+
+#: R/kmg2_dist.R:207
+msgid "Plot mass function"
+msgstr ""
+
+#: R/kmg2_hist.R:9
+msgid "Histogram"
+msgstr ""
+
+#: R/kmg2_hist.R:43
+msgid "No. of bins"
+msgstr ""
+
+#: R/kmg2_hist.R:50
+msgid "Frequency counts"
+msgstr ""
+
+#: R/kmg2_hist.R:51
+msgid "Percentages"
+msgstr ""
+
+#: R/kmg2_hist.R:52
+msgid "Densities"
+msgstr ""
+
+#: R/kmg2_hist.R:53
+msgid "Axis scaling"
+msgstr ""
+
+#: R/kmg2_hist.R:61
+msgid "Density estimation"
+msgstr ""
+
+#: R/kmg2_km.R:9
+msgid "Kaplan-Meier plot"
+msgstr ""
+
+#: R/kmg2_km.R:20
+msgid "Time variable"
+msgstr ""
+
+#: R/kmg2_km.R:21
+msgid "Event variable (0=censor, 1=event)"
+msgstr ""
+
+#: R/kmg2_km.R:41
+msgid "Inside"
+msgstr ""
+
+#: R/kmg2_km.R:42
+msgid "Outside"
+msgstr ""
+
+#: R/kmg2_km.R:43
+msgid "No. at risk"
+msgstr ""
+
+#: R/kmg2_km.R:51
+msgid "Tick count"
+msgstr ""
+
+#: R/kmg2_km.R:86
+msgid "No Time variable selected."
+msgstr ""
+
+#: R/kmg2_km.R:90
+msgid "No Event variables selected."
+msgstr ""
+
+#: R/kmg2_km.R:142
+msgid "Estimation failed in survfit().  This data may be inappropriate."
+msgstr ""
+
+#: R/kmg2_line.R:9
+msgid "Line chart"
+msgstr ""
+
+#: R/kmg2_line.R:40
+msgid "Line"
+msgstr ""
+
+#: R/kmg2_line.R:41
+msgid "Step"
+msgstr ""
+
+#: R/kmg2_line.R:42
+msgid "Area"
+msgstr ""
+
+#: R/kmg2_line.R:43
+msgid "Line plot type"
+msgstr ""
+
+#: R/kmg2_line.R:52
+msgid "Sum"
+msgstr ""
+
+#: R/kmg2_line.R:53
+msgid "Summarization"
+msgstr ""
+
+#: R/kmg2_line.R:97
+msgid ""
+"x-values are not in order.\n"
+"Continue?"
+msgstr ""
+"x の値が大きさの順に並んでいません。\n"
+"続行しますか？"
+
+#: R/kmg2_pie.R:9
+msgid "Pie chart"
+msgstr ""
+
+#: R/kmg2_qq.R:9
+msgid "Q-Q plot"
+msgstr ""
+
+#: R/kmg2_qq.R:40
+msgid "Normal distribution"
+msgstr ""
+
+#: R/kmg2_qq.R:41
+msgid "Log-normal distribution"
+msgstr ""
+
+#: R/kmg2_qq.R:42
+msgid "Beta distribution"
+msgstr ""
+
+#: R/kmg2_qq.R:43
+msgid "Exponential distribution"
+msgstr ""
+
+#: R/kmg2_qq.R:44
+msgid "Gamma distribution"
+msgstr ""
+
+#: R/kmg2_qq.R:45
+msgid "Weibull distribution"
+msgstr ""
+
+#: R/kmg2_qq.R:46
+msgid "Other distribution"
+msgstr ""
+
+#: R/kmg2_qq.R:47
+msgid "Distribution"
+msgstr ""
+
+#: R/kmg2_qq.R:56
+msgid "Parameters for other distribution"
+msgstr ""
+
+#: R/kmg2_qq.R:138
+msgid "The log-normal distribution defined on the interval (0, +Inf)."
+msgstr ""
+
+#: R/kmg2_qq.R:169
+msgid "The beta distribution defined on the interval [0, 1]."
+msgstr ""
+
+#: R/kmg2_qq.R:200
+msgid "The exponential distribution defined on the interval [0, +Inf)."
+msgstr ""
+
+#: R/kmg2_qq.R:230
+msgid "The gamma distribution defined on the interval [0, +Inf)."
+msgstr ""
+
+#: R/kmg2_qq.R:261
+msgid "The weibull distribution defined on the interval [0, +Inf)."
+msgstr ""
+
+#: R/kmg2_qq.R:302
+msgid "Parameter estimation failed."
+msgstr ""
+
+#: R/kmg2_scatter.R:9
+msgid "Scatter plot"
+msgstr ""
+
+#: R/kmg2_scatter.R:40
+msgid "Smoothing with C.I. (linear regression)"
+msgstr ""
+
+#: R/kmg2_scatter.R:41
+msgid "Smoothing without C.I. (linear regression)"
+msgstr ""
+
+#: R/kmg2_scatter.R:42
+msgid "Smoothing with C.I. (loess or gam)"
+msgstr ""
+
+#: R/kmg2_scatter.R:43
+msgid "Smoothing without C.I. (loess or gam)"
+msgstr ""
+
+#: R/kmg2_scatter.R:44
+msgid "Smoothing type"
+msgstr ""
+
+#: R/kmg2_scatter.R:196
+#: R/kmg2_scattermatrix.R:144
+msgid "Smoothing failed.  Try another smoothing type."
+msgstr ""
+
+#: R/kmg2_scattermatrix.R:9
+msgid "Scatter matrix"
+msgstr ""
+
+#: R/kmg2_scattermatrix.R:19
+msgid "Select variables (three or more)"
+msgstr ""
+
+#: R/kmg2_scattermatrix.R:36
+msgid "Smoosing with C.I. (linear regression)"
+msgstr ""
+
+#: R/kmg2_scattermatrix.R:37
+msgid "Smoosing without C.I. (linear regression)"
+msgstr ""
+
+#: R/kmg2_scattermatrix.R:38
+msgid "Smoosing with C.I. (loess or gam)"
+msgstr ""
+
+#: R/kmg2_scattermatrix.R:39
+msgid "Smoosing without C.I. (loess or gam)"
+msgstr ""
+
+#: R/kmg2_scattermatrix.R:40
+msgid "Smoosing type"
+msgstr ""
+
+#: R/kmg2_scattermatrix.R:67
+msgid "Fewer than 3 variable selected."
+msgstr ""
+
+#: R/kmg2_tools.R:241
+msgid "Font size"
+msgstr ""
+
+#: R/kmg2_tools.R:251
+msgid "Font family"
+msgstr ""
+
+#: R/kmg2_tools.R:263
+msgid "Colour pattern"
+msgstr ""
+
+#: R/kmg2_tools.R:271
+msgid "Save graph"
+msgstr ""
+
+#: R/kmg2_tools.R:272
+msgid "Graph options"
+msgstr ""
+
+#: R/kmg2_tools.R:279
+msgid "Theme"
+msgstr ""
+
+#: inst/etc/tmenus.txt:2
+msgid "KMggplot2"
+msgstr ""
+
+#: inst/etc/tmenus.txt:3
+msgid "Kaplan-Meier plot..."
+msgstr ""
+
+#: inst/etc/tmenus.txt:4
+msgid "Histogram..."
+msgstr ""
+
+#: inst/etc/tmenus.txt:5
+msgid "Q-Q plot..."
+msgstr ""
+
+#: inst/etc/tmenus.txt:6
+msgid "Box plot / Errorbar plot..."
+msgstr ""
+
+#: inst/etc/tmenus.txt:7
+msgid "Scatter plot..."
+msgstr ""
+
+#: inst/etc/tmenus.txt:8
+msgid "Scatter matrix..."
+msgstr ""
+
+#: inst/etc/tmenus.txt:9
+msgid "Line chart..."
+msgstr ""
+
+#: inst/etc/tmenus.txt:10
+msgid "Pie chart..."
+msgstr ""
+
+#: inst/etc/tmenus.txt:11
+msgid "Bar chart for discrete variables..."
+msgstr ""
+
+#: inst/etc/tmenus.txt:12
+msgid "Contour plot..."
+msgstr ""
+
+#: inst/etc/tmenus.txt:13
+msgid "Plot distribution..."
+msgstr ""
+
+#: inst/etc/tmenus.txt:14
+msgid "Normal distribution..."
+msgstr ""
+
+#: inst/etc/tmenus.txt:15
+msgid "t distribution..."
+msgstr ""
+
+#: inst/etc/tmenus.txt:16
+msgid "Chi-square distribution..."
+msgstr ""
+
+#: inst/etc/tmenus.txt:17
+msgid "F distribution..."
+msgstr ""
+
+#: inst/etc/tmenus.txt:18
+msgid "Exponential distribution..."
+msgstr ""
+
+#: inst/etc/tmenus.txt:19
+msgid "Uniform distribution..."
+msgstr ""
+
+#: inst/etc/tmenus.txt:20
+msgid "Beta distribution..."
+msgstr ""
+
+#: inst/etc/tmenus.txt:21
+msgid "Cauchy distribution..."
+msgstr ""
+
+#: inst/etc/tmenus.txt:22
+msgid "Logistic distribution..."
+msgstr ""
+
+#: inst/etc/tmenus.txt:23
+msgid "Log-normal distribution..."
+msgstr ""
+
+#: inst/etc/tmenus.txt:24
+msgid "Gamma distribution..."
+msgstr ""
+
+#: inst/etc/tmenus.txt:25
+msgid "Weibull distribution..."
+msgstr ""
+
+#: inst/etc/tmenus.txt:26
+msgid "Binomial distribution..."
+msgstr ""
+
+#: inst/etc/tmenus.txt:27
+msgid "Poisson distribution..."
+msgstr ""
+
+#: inst/etc/tmenus.txt:28
+msgid "Geometric distribution..."
+msgstr ""
+
+#: inst/etc/tmenus.txt:29
+msgid "Hypergeometric distribution..."
+msgstr ""
+
+#: inst/etc/tmenus.txt:30
+msgid "Negative binomial distribution..."
+msgstr ""
+

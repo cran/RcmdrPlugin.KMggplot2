@@ -1,0 +1,32 @@
+\name{kmg2_dist-class}
+\docType{class}
+\alias{kmg2_dist}
+\alias{kmg2_dist-class}
+\alias{plotContinuous,kmg2_dist-method}
+\alias{plotDiscrete,kmg2_dist-method}
+\alias{kmg2_dist_beta}
+\alias{kmg2_dist_binom}
+\alias{kmg2_dist_cauchy}
+\alias{kmg2_dist_chisq}
+\alias{kmg2_dist_exp}
+\alias{kmg2_dist_f}
+\alias{kmg2_dist_gamma}
+\alias{kmg2_dist_geom}
+\alias{kmg2_dist_hyper}
+\alias{kmg2_dist_lnorm}
+\alias{kmg2_dist_logis}
+\alias{kmg2_dist_nbinom}
+\alias{kmg2_dist_norm}
+\alias{kmg2_dist_pois}
+\alias{kmg2_dist_t}
+\alias{kmg2_dist_unif}
+\alias{kmg2_dist_weibull}
+\title{Plot distribution}
+\description{
+  This function calls an R Commander plug-in window for distributions plots (beta distirubtion, binomial distirubtion, cauchy distirubtion, chi-square distirubtion, exponential distirubtion, F distirubtion, gamma distirubtion, geometric distirubtion, hypergeometric distirubtion, log-normal distirubtion, logistic distirubtion, negative binomial distirubtion, normal distirubtion, poisson distirubtion, t distirubtion, uniform distirubtion and weibull distirubtion).
+}
+\seealso{
+  \code{\link[ggplot2:ggplot]{ggplot}},
+  \code{\link[stats:Distributions]{Distributions}}
+}
+\keyword{hplot}
