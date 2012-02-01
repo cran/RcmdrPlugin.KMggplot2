@@ -78,11 +78,11 @@ kmg2_box <- setRefClass(
         saveFile     <- tclvalue(tbbox1$tbcheckbox$cbvariables[[1]])
 
         if (tclvalue(tbbox1$tbthemebox$rbvariable) == "1")
-          theme <- "kmg2_theme_gray"
+          theme <- "theme_gray"
         else if (tclvalue(tbbox1$tbthemebox$rbvariable) == "2")
-          theme <- "kmg2_theme_bw"
+          theme <- "theme_bw"
         else
-          theme <- "kmg2_theme_gray"
+          theme <- "theme_gray"
 
         closeDialog()
         if (length(x) == 0) {

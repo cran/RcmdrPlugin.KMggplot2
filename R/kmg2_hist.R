@@ -88,11 +88,11 @@ kmg2_hist <- setRefClass(
         saveFile     <- tclvalue(tbbox1$tbcheckbox$cbvariables[[1]])
 
         if (tclvalue(tbbox1$tbthemebox$rbvariable) == "1")
-          theme <- "kmg2_theme_gray"
+          theme <- "theme_gray"
         else if (tclvalue(tbbox1$tbthemebox$rbvariable) == "2")
-          theme <- "kmg2_theme_bw"
+          theme <- "theme_bw"
         else
-          theme <- "kmg2_theme_gray"
+          theme <- "theme_gray"
 
         closeDialog()
         if (length(x) == 0) {
@@ -140,6 +140,9 @@ kmg2_hist <- setRefClass(
           nbins <- nclass.Sturges(.df$x)
         } else {
           nbins <- as.numeric(nbins)
+					if (is.na(nbins)) {
+						nbins <- nclass.scott(.df$x)
+					}
         }
         command <- paste(".nbins <- pretty(range(.df$x), n = ", nbins, ", min.n = 1)", sep="")
         doItAndPrint(command)
@@ -168,7 +171,7 @@ kmg2_hist <- setRefClass(
             ylab <- "ylab(\"Frequency count\") + "
           } else if (y == "..count../sum(..count..)") {
             ylab <- "ylab(\"Percentage\") + "
-            scale1 <- "scale_y_continuous(formatter = \"percent\") + "
+            scale1 <- "scale_y_continuous(labels = percent) + "
           } else if (y == "..density..") {
             ylab <- "ylab(\"Density\") + "
           }
@@ -180,7 +183,7 @@ kmg2_hist <- setRefClass(
         scale2 <- ""
         if (heatPlot == "1") {
           if (y == "..count../sum(..count..)") {
-            scale2 <- ", formatter = \"percent\""
+            scale2 <- ", labels = percent"
           }
           heat <- paste(", aes(fill = ", y, ")", sep="")
           scale2 <- paste(
