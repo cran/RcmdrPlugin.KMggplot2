@@ -229,7 +229,7 @@ kmg2_toolbox <- setRefClass(
 
   methods = list(
 
-    front = function(top, showcolourbox = TRUE, fontSize = "25") {
+    front = function(top, showcolourbox = TRUE, fontSize = "20") {
 
       setframe <<- tkframe(top)
 
@@ -275,7 +275,7 @@ kmg2_toolbox <- setRefClass(
       tbthemebox <<- kmg2_radioboxes$new()
       tbthemebox$front(
         top    = setframe,
-        labels = list("kmg2_theme_gray", "kmg2_theme_bw"),
+        labels = list("theme_gray", "theme_bw"),
         title  = kmg2_gettextRcmdr("Theme")
       )
 

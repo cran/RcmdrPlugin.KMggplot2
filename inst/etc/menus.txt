@@ -1,7 +1,7 @@
 #type	menu/item	operation/parent	label	command/menu	activation	install?
 menu	kmg2Menu	topMenu	""	""	""	""
 item	topMenu	cascade "KMggplot2"	kmg2Menu	""	""
-item	kmg2Menu	command "Kaplan-Meier plot..."	kmg2_plot_km	"numericP() && factorsP()"	""
+item	kmg2Menu	command "Kaplan-Meier plot..."	kmg2_plot_km	"numericP()"	""
 item	kmg2Menu	command "Histogram..."	kmg2_plot_hist	"numericP()"	""
 item	kmg2Menu	command "Q-Q plot..."	kmg2_plot_qq	"numericP()"	""
 item	kmg2Menu	command "Box plot / Errorbar plot..."	kmg2_plot_box	"numericP(2)"	""

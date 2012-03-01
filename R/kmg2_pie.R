@@ -46,11 +46,11 @@ kmg2_pie <- setRefClass(
         saveFile     <- tclvalue(tbbox1$tbcheckbox$cbvariables[[1]])
 
         if (tclvalue(tbbox1$tbthemebox$rbvariable) == "1")
-          theme <- "kmg2_theme_gray"
+          theme <- "theme_gray"
         else if (tclvalue(tbbox1$tbthemebox$rbvariable) == "2")
-          theme <- "kmg2_theme_bw"
+          theme <- "theme_bw"
         else
-          theme <- "kmg2_theme_gray"
+          theme <- "theme_gray"
 
         closeDialog()
         if (length(y) == 0) {
@@ -95,7 +95,7 @@ kmg2_pie <- setRefClass(
 				
 				geom <- "geom_bar(width = 1) + coord_polar(theta = \"y\") + "
         scale <- paste(
-  						"scale_fill_brewer(palette=\"", colourset, "\") + ", "scale_y_continuous(formatter = \"percent\") + ", sep="")
+  						"scale_fill_brewer(palette=\"", colourset, "\") + ", "scale_y_continuous(labels = percent) + ", sep="")
 
 				if (length(z) == 0) {
 					facet <- ""

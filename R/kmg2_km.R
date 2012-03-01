@@ -75,11 +75,11 @@ kmg2_km <- setRefClass(
         saveFile     <- tclvalue(tbbox1$tbcheckbox$cbvariables[[1]])
 
         if (tclvalue(tbbox1$tbthemebox$rbvariable) == "1")
-          theme <- "kmg2_theme_gray"
+          theme <- "theme_gray"
         else if (tclvalue(tbbox1$tbthemebox$rbvariable) == "2")
-          theme <- "kmg2_theme_bw"
+          theme <- "theme_bw"
         else
-          theme <- "kmg2_theme_gray"
+          theme <- "theme_gray"
 
         closeDialog()
         if (length(x) == 0) {
@@ -132,6 +132,8 @@ kmg2_km <- setRefClass(
           )
         }
         doItAndPrint(command)
+				command <- ".df <- .df[do.call(\"order\", .df[, c(\"trt\", \"time\"), drop = FALSE]), , drop = FALSE]"
+        doItAndPrint(command)
         strataNum <- length(unique(.df$trt))
 
         command <- ".fit <- survfit(Surv(time=time, event=surv, type=\"right\") ~ trt, .df)"
@@ -150,7 +152,7 @@ kmg2_km <- setRefClass(
 				doItAndPrint(command)
 
         if (strataNum == 1) {
-          command <- ".fit$strata <- rep(factor(.df$trt[1]), nrow(.df))"
+          command <- ".fit$strata <- rep(factor(.df$trt[1]), length(.fit$time))"
         } else {
           command <- ".fit$strata <- rep(unique(.df$trt), .fit$strata)"
         }
@@ -192,7 +194,7 @@ kmg2_km <- setRefClass(
             ".natrisk <- by(",
             ".fit, .fit$strata, ",
             "function(x, seq) {",
-            "x <- sort_df(x, x$surv); .natrisk <- NULL;",
+            "x <- x[do.call(\"order\", x[, x$surv, drop = FALSE]), , drop = FALSE]; .natrisk <- NULL;",
             "for (i in (1:length(seq))) {",
             "for (j in (1:length(x$surv))) {",
             "if (x$time[j] <= seq[i]) {",
@@ -247,7 +249,7 @@ kmg2_km <- setRefClass(
             doItAndPrint(command)
             nriskcommand <- ""
           } else {
-            nriskcommand <- "geom_text(data=.natrisk, aes(y=y, x=x, label=label, colour=factor(group)), legend=FALSE) + "
+            nriskcommand <- "geom_text(data = .natrisk, aes(y = y, x = x, label = label, colour = factor(group)), show_guide = FALSE) + "
           }
         } else {
           nriskcommand <- ""
@@ -263,16 +265,13 @@ kmg2_km <- setRefClass(
           opts <- " + opts(legend.position = \"none\")"
 					zlab <- ""
         } else {
-          opts <- " + opts(legend.justification = c(1, 1))"
+          opts <- " + opts(legend.position = c(1, 1), legend.justification = c(1, 1), legend.background = theme_rect(fill = \"grey95\", colour = \"grey95\", size = 4), legend.key = theme_rect(fill = \"grey95\", colour = \"white\"), legend.key.size = unit(1.5, \"lines\"))"
           if (nchar(zlab) == 0) {
             opts <- paste(opts, " + opts(legend.title = theme_blank())", sep="")
           } else if (zlab == "<auto>") {
   					zlab <- paste("labs(colour = \"", z, "\") + ", sep="")
           } else {
   					zlab <- paste("labs(colour = \"", zlab, "\") + ", sep="")
-          }
-          if (main != "") {
-            opts <- paste(opts, " + opts(legend.position = c(0.95, 0.9))", sep="")
           }
         }
 
@@ -291,7 +290,7 @@ kmg2_km <- setRefClass(
         geom <- "geom_text() + "
         if (natriskValue == "3") {
           command <- paste(
-            ".plot2 <- ggplot(data=.natrisk, aes(y=y, x=x, label=label, colour=factor(group))) +",
+            ".plot2 <- ggplot(data=.natrisk, aes(y=y, x=x, label=label, colour=factor(group, attr(factor(.fit$strata), \"levels\")))) +",
             geom, scale, 
             theme, "_natrisk(", fontSize, ", \"", fontfoamily, "\")",
             sep=""
@@ -305,7 +304,7 @@ kmg2_km <- setRefClass(
             sep=""
           )
           command <- paste(
-            ".plot3 <- ggplot(data=.natvaxis, aes(y=y, x=x, label=group, colour=factor(group))) +",
+            ".plot3 <- ggplot(data=.natvaxis, aes(y=y, x=x, label=group, colour=factor(group, attr(factor(.fit$strata), \"levels\")))) +",
             geom, scale,
             theme, "_natrisk21(", fontSize, ", \"", fontfoamily, "\")",
             sep=""
@@ -317,8 +316,8 @@ kmg2_km <- setRefClass(
           tableMargin <- length(unique(.fit$strata)) + 2
           command <- paste(
             "grid.newpage(); ",
-            "pushViewport(viewport(layout = grid.layout(2, 2,",
-            "heights = unit(c(1, ", tableMargin, "), c(\"null\", \"lines\")),",
+            "pushViewport(viewport(layout = grid.layout(2, 2, ",
+            "heights = unit(c(1, ", tableMargin, "), c(\"null\", \"lines\")), ",
             "widths  = unit(c(7, 1), c(\"lines\", \"null\"))))); ",
             "print(.plot1, vp=viewport(layout.pos.row=1, layout.pos.col=1:2)); ",
             "print(.plot2, vp=viewport(layout.pos.row=2, layout.pos.col=1:2)); ",
