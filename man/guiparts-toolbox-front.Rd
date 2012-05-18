@@ -1,0 +1,46 @@
+\docType{methods}
+\name{front,toolbox-method}
+\alias{front,toolbox-method}
+\title{The \code{front} Method for \code{toolbox} Subclass}
+\arguments{
+  \item{top}{\code{tkwin} class object; top of widget
+  window.}
+
+  \item{showcolourbox}{Boolean; whether the colour set
+  frame is shown or not.}
+
+  \item{fontSize}{Character; the initialization value of
+  the font size.}
+
+  \item{fontFamily}{Numeric; the initialization value of
+  the font family.}
+
+  \item{colourSet}{Numeric; the initialization value of the
+  colour set.}
+
+  \item{saveGraph}{Numeric; the initialization value of the
+  save graph option.}
+
+  \item{themeBase}{Numeric; the initialization value of the
+  theme.}
+}
+\description{
+  The \code{front} Method for \code{toolbox} Subclass
+}
+\seealso{
+  Other guiparts: \code{\link{back,gparts_base-method}},
+  \code{\link{checkboxes-class}},
+  \code{\link{front,checkboxes-method}},
+  \code{\link{front,radioboxes-method}},
+  \code{\link{front,textfield-method}},
+  \code{\link{front,textfields-method}},
+  \code{\link{front,variableboxes-method}},
+  \code{\link{gparts_base-class}},
+  \code{\link{radioboxes-class}},
+  \code{\link{textfield-class}},
+  \code{\link{textfields-class}},
+  \code{\link{toolbox-class}},
+  \code{\link{variableboxes-class}}
+}
+\keyword{hplot}
+

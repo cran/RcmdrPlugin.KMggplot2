@@ -1,0 +1,35 @@
+\docType{methods}
+\name{front,textfields-method}
+\alias{front,textfields-method}
+\title{The \code{front} Method for \code{textfields} Subclass}
+\arguments{
+  \item{top}{\code{tkwin} class object; top of widget
+  window.}
+
+  \item{initValues}{List of character; initialization
+  values of text fields.}
+
+  \item{titles}{List of character; titles of text fields.}
+
+  \item{boxwidth}{Character; size of text fields.}
+}
+\description{
+  The \code{front} Method for \code{textfields} Subclass
+}
+\seealso{
+  Other guiparts: \code{\link{back,gparts_base-method}},
+  \code{\link{checkboxes-class}},
+  \code{\link{front,checkboxes-method}},
+  \code{\link{front,radioboxes-method}},
+  \code{\link{front,textfield-method}},
+  \code{\link{front,toolbox-method}},
+  \code{\link{front,variableboxes-method}},
+  \code{\link{gparts_base-class}},
+  \code{\link{radioboxes-class}},
+  \code{\link{textfield-class}},
+  \code{\link{textfields-class}},
+  \code{\link{toolbox-class}},
+  \code{\link{variableboxes-class}}
+}
+\keyword{hplot}
+
