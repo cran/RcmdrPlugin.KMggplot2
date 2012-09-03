@@ -244,7 +244,10 @@ box <- setRefClass(
           )
         }
       } else if (parms$plotType == "2") {
-        geom <- "geom_violin() + "
+        geom <- paste0(
+          "geom_violin() + ",
+          "stat_summary(fun.y = \"median\", geom = \"point\", pch = 10, size = 4) + "
+        )
       } else if (parms$plotType == "3") {
         geom <- paste0(
           "stat_summary(fun.y = \"mean\", geom = \"point\") + ",  
@@ -298,20 +301,20 @@ box <- setRefClass(
         opts <- c(opts, "panel.margin = unit(0.3, \"lines\")")
       }
       if (nchar(parms$main) != 0) {
-        opts <- c(opts, paste0("plot.title = theme_text(family = \"", parms$family, "\", size = ", parms$size, " * 1.2, vjust = 1.5)"))
+        opts <- c(opts, paste0("plot.title = element_text(size = rel(1.2), vjust = 1.5)"))
       }
 
       if (length(parms$x) == 0) {
         if (parms$flipedCoordinates == "0") {
-          opts <- c(opts, "axis.title.x = theme_blank()", "axis.text.x = theme_blank()")
+          opts <- c(opts, "axis.title.x = element_blank()", "axis.text.x = element_blank()")
         } else {
-          opts <- c(opts, "axis.title.y = theme_blank()", "axis.text.y = theme_blank()")
+          opts <- c(opts, "axis.title.y = element_blank()", "axis.text.y = element_blank()")
         }
       }
 
       if (length(opts) != 0) {
         opts <- do.call(paste, c(opts, list(sep = ", ")))
-        opts <- paste0(" + opts(", opts, ")")
+        opts <- paste0(" + theme(", opts, ")")
       } else {
         opts <- ""
       }

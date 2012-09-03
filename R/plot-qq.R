@@ -398,9 +398,9 @@ qq <- setRefClass(
         } else {
           main <- paste0("Theoretical: ", parms$distParms)
         }
-        main <- paste0("opts(title = \"", main, "\") + ")
+        main <- paste0("labs(title = \"", main, "\") + ")
       } else {
-        main <- paste0("opts(title = \"", parms$main, "\") + ")
+        main <- paste0("labs(title = \"", parms$main, "\") + ")
       }
       main
 

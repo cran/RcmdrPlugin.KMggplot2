@@ -12,25 +12,25 @@
 #' @export
 theme_bw_natrisk <- function(base_size = 20, base_family = "") {
 
-  mod <- list(
-    axis.text.x = theme_blank(),
-    axis.text.y = theme_text(family = base_family, size = base_size * 0.8, hjust = 1, lineheight = 0.9, colour = "transparent"),
-    axis.title.x = theme_blank(),
-    axis.title.y = theme_text(family = base_family, size = base_size, vjust = 0.5, angle = 90, colour = "transparent"),
-    axis.ticks = theme_segment(colour = "transparent"),
-    legend.position = "none",
-    panel.background = theme_rect(fill = "transparent", colour = "transparent"),
-    panel.grid.major = theme_line(colour = "transparent", size = 0.2),
-    panel.grid.minor = theme_line(colour = "transparent", size = 0.5),
-    panel.border = theme_blank(),
-    strip.background = theme_rect(fill = "transparent", colour = "transparent"),
-    strip.text.x = theme_blank(),
-    strip.text.y = theme_text(family = base_family, size = base_size * 0.8, angle = -90, colour = "transparent"),
-    plot.background = theme_rect(colour = "transparent", fill = "transparent"),
-    plot.title = theme_blank(),
-    plot.margin = unit(c(0, 1, 0, 0.5), "lines")
+  theme_bw(base_size = base_size, base_family = base_family) %+replace%
+  theme(
+    axis.text.x      = element_blank(),
+    axis.text.y      = element_text(family = base_family, size = base_size * 0.8, hjust = 1, lineheight = 0.9, colour = "transparent"),
+    axis.title.x     = element_blank(),
+    axis.title.y     = element_text(family = base_family, size = base_size, vjust = 0.5, angle = 90, colour = "transparent"),
+    axis.ticks       = element_line(colour = "transparent"),
+    legend.position  = "none",
+    panel.background = element_rect(fill = "transparent", colour = "transparent"),
+    panel.grid.major = element_line(colour = "transparent", size = 0.2),
+    panel.grid.minor = element_line(colour = "transparent", size = 0.5),
+    panel.border     = element_blank(),
+    strip.background = element_rect(fill = "transparent", colour = "transparent"),
+    strip.text.x     = element_blank(),
+    strip.text.y     = element_text(family = base_family, size = base_size * 0.8, angle = -90, colour = "transparent"),
+    plot.background  = element_rect(colour = "transparent", fill = "transparent"),
+    plot.title       = element_blank(),
+    plot.margin      = unit(c(0, 1, 0, 0.5), "lines")
   )
-  modifyList(theme_bw(base_size = base_size, base_family = base_family), mod)
 
 }
 
@@ -39,26 +39,26 @@ theme_bw_natrisk <- function(base_size = 20, base_family = "") {
 #' @export
 theme_bw_natrisk21 <- function(base_size = 20, base_family = "") {
 
-  mod <- list(
-    axis.line = theme_blank(),
-    axis.text.x = theme_blank(),
-    axis.text.y = theme_blank(),
-    axis.ticks = theme_blank(),
-    axis.title.x = theme_blank(),
-    axis.title.y = theme_blank(),
-    legend.position = "none",
-    panel.background = theme_rect(fill = "transparent", colour = "transparent"),
-    panel.grid.major = theme_blank(),
-    panel.grid.minor = theme_blank(),
-    panel.margin = unit(0, "lines"),
-    panel.border = theme_blank(),
-    strip.background = theme_rect(fill = "transparent", colour = "transparent"),
-    strip.text.x = theme_blank(),
-    strip.text.y = theme_blank(),
-    plot.background = theme_rect(colour = "transparent", fill = "transparent"),
-    plot.title = theme_blank(),
-    plot.margin = unit(c(0, 0, 0, -3), "lines")
+  theme_bw(base_size = base_size, base_family = base_family) %+replace%
+  theme(
+    axis.line        = element_blank(),
+    axis.text.x      = element_blank(),
+    axis.text.y      = element_blank(),
+    axis.ticks       = element_blank(),
+    axis.title.x     = element_blank(),
+    axis.title.y     = element_blank(),
+    legend.position  = "none",
+    panel.background = element_rect(fill = "transparent", colour = "transparent"),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    panel.margin     = unit(0, "lines"),
+    panel.border     = element_blank(),
+    strip.background = element_rect(fill = "transparent", colour = "transparent"),
+    strip.text.x     = element_blank(),
+    strip.text.y     = element_blank(),
+    plot.background  = element_rect(colour = "transparent", fill = "transparent"),
+    plot.title       = element_blank(),
+    plot.margin      = unit(c(0, 0, 0, -3), "lines")
   )
-  modifyList(theme_bw(base_size = base_size, base_family = base_family), mod)
 
 }
