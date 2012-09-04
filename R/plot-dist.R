@@ -224,12 +224,12 @@ dist <- setRefClass(
         main <- ""
       } else if (parms$main == "<auto>") {
         if (parms$funcType == "1") {
-          main <- paste0("opts(title = \"d", distName, "(x", parms$parmValuesList, ")\") + ")
+          main <- paste0("labs(title = \"d", distName, "(x", parms$parmValuesList, ")\") + ")
         } else {
-          main <- paste0("opts(title = \"p", distName, "(x", parms$parmValuesList, ")\") + ")
+          main <- paste0("labs(title = \"p", distName, "(x", parms$parmValuesList, ")\") + ")
         }
       } else {
-        main <- paste0("opts(title = \"", parms$main, "\") + ")
+        main <- paste0("labs(title = \"", parms$main, "\") + ")
       }
       main
 

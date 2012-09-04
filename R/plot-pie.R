@@ -270,29 +270,29 @@ pie <- setRefClass(
         opts <- c(opts, "panel.margin = unit(0.3, \"lines\")")
       }
       if (nchar(parms$main) != 0) {
-        opts <- c(opts, paste0("plot.title = theme_text(family = \"", parms$family, "\", size = ", parms$size, " * 1.2, vjust = 1.5)"))
+        opts <- c(opts, paste0("plot.title = element_text(size = rel(1.2), vjust = 1.5)"))
       }
 
       opts <- c(
         opts,
         "legend.position = \"right\"",
-        "axis.title.x = theme_blank()",
-        "axis.title.y = theme_blank()",
-        "axis.text.y = theme_blank()",
-        "axis.ticks = theme_blank()"
+        "axis.title.x = element_blank()",
+        "axis.title.y = element_blank()",
+        "axis.text.y = element_blank()",
+        "axis.ticks = element_blank()"
       )
 
       if (nchar(parms$ylab) == 0) {
-        opts <- c(opts, "legend.title = theme_blank()")
+        opts <- c(opts, "legend.title = element_blank()")
       }
 
 			if (parms$theme == "RcmdrPlugin.KMggplot2::theme_simple") {
-        opts <- c(opts, "panel.border = theme_blank()")
+        opts <- c(opts, "panel.border = element_blank()")
 			}
 
       if (length(opts) != 0) {
         opts <- do.call(paste, c(opts, list(sep = ", ")))
-        opts <- paste0(" + opts(", opts, ")")
+        opts <- paste0(" + theme(", opts, ")")
       } else {
         opts <- ""
       }

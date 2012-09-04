@@ -251,13 +251,13 @@ plot_base <- setRefClass(
     checkTheme = function(index) {
       
       if (index == "1") {
-        theme <- "RcmdrPlugin.KMggplot2::theme_simple"
-      } else if (index == "2") {
         theme <- "theme_bw"
+      } else if (index == "2") {
+        theme <- "RcmdrPlugin.KMggplot2::theme_simple"
       } else if (index == "3") {
         theme <- "theme_gray"
       } else {
-        theme <- "RcmdrPlugin.KMggplot2::theme_simple"
+        theme <- "theme_bw"
       }
       theme
       
@@ -392,7 +392,7 @@ plot_base <- setRefClass(
       if (nchar(parms$main) == 0) {
         main <- ""
       } else {
-        main <- paste0("opts(title = \"", parms$main, "\") + ")
+        main <- paste0("labs(title = \"", parms$main, "\") + ")
       }
       main
 
@@ -413,12 +413,12 @@ plot_base <- setRefClass(
         opts <- c(opts, "panel.margin = unit(0.3, \"lines\")")
       }
       if (nchar(parms$main) != 0) {
-        opts <- c(opts, paste0("plot.title = theme_text(family = \"", parms$family, "\", size = ", parms$size, " * 1.2, vjust = 1.5)"))
+        opts <- c(opts, paste0("plot.title = element_text(size = rel(1.2), vjust = 1.5)"))
       }
 
       if (length(opts) != 0) {
         opts <- do.call(paste, c(opts, list(sep = ", ")))
-        opts <- paste0(" + opts(", opts, ")")
+        opts <- paste0(" + theme(", opts, ")")
       } else {
         opts <- ""
       }

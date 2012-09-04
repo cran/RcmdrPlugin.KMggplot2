@@ -4,6 +4,16 @@ NEWS file for the RcmdrPlugin.KMggplot2 package
 
 ----------------------------------------------------------------
 
+Changes in version 0.1-1 (2012-09-03)
+
+ o Renamed opt() to theme() and theme_xx() and element_xx() 
+   for the new theme system.
+ o Deleted a theme element: theme_rect2().
+ o Box plot: added a symbol of the median for violin plots.
+
+
+----------------------------------------------------------------
+
 Changes in version 0.1-0 (2012-05-18)
 
  o Restructuring implementation approach for efficient
@@ -26,7 +36,7 @@ Changes in version 0.1-0 (2012-05-18)
 
 ----------------------------------------------------------------
 
-Changes in version 0.0-4 (2011-07-28)
+Changes in version 0.0-4 (2012-05-01)
 
  o Fixed "scale_y_continuous(formatter = "percent")" to
    "scale_y_continuous(labels = percent)" for ggplot2

@@ -290,12 +290,12 @@ contour <- setRefClass(
         opts <- c(opts, "panel.margin = unit(0.3, \"lines\")")
       }
       if (nchar(parms$main) != 0) {
-        opts <- c(opts, paste0("plot.title = theme_text(family = \"", parms$family, "\", size = ", parms$size, " * 1.2, vjust = 1.5)"))
+        opts <- c(opts, paste0("plot.title = element_text(size = rel(1.2), vjust = 1.5)"))
       }
 
       if (parms$decoType != "1") {
         if (nchar(parms$zlab) == 0) {
-          opts <- c(opts, "legend.position = \"right\"", "legend.title = theme_blank()")
+          opts <- c(opts, "legend.position = \"right\"", "legend.title = element_blank()")
         } else {
           opts <- c(opts, "legend.position = \"right\"")
         }
@@ -303,7 +303,7 @@ contour <- setRefClass(
 
       if (length(opts) != 0) {
         opts <- do.call(paste, c(opts, list(sep = ", ")))
-        opts <- paste0(" + opts(", opts, ")")
+        opts <- paste0(" + theme(", opts, ")")
       } else {
         opts <- ""
       }

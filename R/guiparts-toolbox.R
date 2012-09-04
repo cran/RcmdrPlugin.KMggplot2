@@ -94,7 +94,7 @@ toolbox <- setRefClass(
       theme$front(
         top       = frame,
         initValue = themeBase,
-        labels    = list("theme_simple", "theme_bw", "theme_gray"),
+        labels    = list("theme_bw", "theme_simple", "theme_gray"),
         title     = gettextKmg2("Theme")
       )
 

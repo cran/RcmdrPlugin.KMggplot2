@@ -16,9 +16,10 @@
 #' @aliases RcmdrPlugin.KMggplot2 KMggplot2
 #' @docType package
 #' @keywords hplot package
-#' @import tcltk2
+#' @import gtable
 #' @import RColorBrewer
 #' @import scales
 #' @import survival
+#' @import tcltk2
 # @exportPattern '^[^\\.]'
 NULL

@@ -448,14 +448,14 @@ km <- setRefClass(
         opts <- c(opts, "panel.margin = unit(0.3, \"lines\")")
       }
       if (nchar(parms$main) != 0) {
-        opts <- c(opts, paste0("plot.title = theme_text(family = \"", parms$family, "\", size = ", parms$size, " * 1.2, vjust = 1.5)"))
+        opts <- c(opts, paste0("plot.title = element_text(size = rel(1.2), vjust = 1.5)"))
       }
 
       if (length(parms$z) == 0) {
         opts <- c(opts, "legend.position = \"none\"")
       } else {
         if (nchar(parms$zlab) == 0) {
-          opts <- c(opts, "legend.title = theme_blank()")
+          opts <- c(opts, "legend.title = element_blank()")
         }
         if (parms$plotType == "3") {
           opts <- c(opts, "legend.position = c(1, 1)", "legend.justification = c(1, 1)")
@@ -466,7 +466,7 @@ km <- setRefClass(
 
       if (length(opts) != 0) {
         opts <- do.call(paste, c(opts, list(sep = ", ")))
-        opts <- paste0(" + opts(", opts, ")")
+        opts <- paste0(" + theme(", opts, ")")
       } else {
         opts <- ""
       }
@@ -537,7 +537,7 @@ km <- setRefClass(
       if (parms$plotType == "3") {
 
         if (length(parms$z) != 0) {
-          opts <- " + opts(legend.position = \"right\")"
+          opts <- " + theme(legend.position = \"right\")"
           command <- ".nrisk$y <- ((.nrisk$y - 0.025) / (max(.nrisk$y) - 0.025) + 0.125) * 0.8"
         } else {
           command <- ".nrisk$y <- 0.5"

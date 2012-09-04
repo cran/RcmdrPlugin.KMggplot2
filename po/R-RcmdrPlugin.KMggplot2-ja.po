@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: RcmdrPlugin.KMggplot2 0.1-0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-17 14:03+0900\n"
-"PO-Revision-Date: 2012-05-17 17:34+0900\n"
+"POT-Creation-Date: 2012-09-03 18:31+0900\n"
+"PO-Revision-Date: 2012-09-03 18:31+0900\n"
 "Last-Translator: Triad sou. <triadsou@gmail.com>\n"
 "Language-Team: Triad sou. <triadsou@gmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -597,7 +597,7 @@ msgstr "ガンマ分布は [0, +Inf) の範囲で定義されています。"
 msgid "The weibull distribution defined on the interval [0, +Inf)."
 msgstr "ワイブル分布は [0, +Inf) の範囲で定義されています。"
 
-#: R/plot-qq.R:317
+#: R/plot-qq.R:314
 msgid "Parameter estimation failed."
 msgstr "パラメータの推定に失敗しました。"
 
@@ -631,7 +631,7 @@ msgid "Scatter plot"
 msgstr "散布図"
 
 #: R/plot-scatter.R:322
-#: R/plot-scattermat.R:238
+#: R/plot-scattermat.R:236
 msgid "Smoothing failed.  Please try another smoothing type, or check the data and variables."
 msgstr "スムージングに失敗しました。 他のスムージング方法試すか、データおよび変数が適切かどうか確認してください。"
 
