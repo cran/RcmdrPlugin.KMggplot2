@@ -249,13 +249,33 @@ plot_base <- setRefClass(
 
     #' Check themes.
     checkTheme = function(index) {
-      
-      if (index == "1") {
+
+      if (index == "theme_bw") {
         theme <- "theme_bw"
-      } else if (index == "2") {
+      } else if (index == "theme_simple") {
         theme <- "RcmdrPlugin.KMggplot2::theme_simple"
-      } else if (index == "3") {
+      } else if (index == "theme_classic") {
+        theme <- "theme_classic"
+      } else if (index == "theme_gray") {
         theme <- "theme_gray"
+      } else if (index == "theme_minimal") {
+        theme <- "theme_minimal"
+      } else if (index == "theme_tufte") {
+        theme <- "ggthemes::theme_tufte"
+      } else if (index == "theme_economist") {
+        theme <- "ggthemes::theme_economist"
+      } else if (index == "theme_solarized") {
+        theme <- "ggthemes::theme_solarized"
+      } else if (index == "theme_stata") {
+        theme <- "ggthemes::theme_stata"
+      } else if (index == "theme_excel") {
+        theme <- "ggthemes::theme_excel"
+      } else if (index == "theme_igray") {
+        theme <- "ggthemes::theme_igray"
+      } else if (index == "theme_few") {
+        theme <- "ggthemes::theme_few"
+      } else if (index == "theme_wsj2") {
+        theme <- "RcmdrPlugin.KMggplot2::theme_wsj2"
       } else {
         theme <- "theme_bw"
       }
@@ -401,7 +421,7 @@ plot_base <- setRefClass(
     #' Get Theme
     getTheme = function(parms) {
 
-      paste0(parms$theme, "(", parms$size, ", \"", parms$family, "\")")
+      paste0(parms$theme, "(base_size = ", parms$size, ", base_family = \"", parms$family, "\")")
 
     },
     

@@ -3,8 +3,6 @@
 #' This function is a \code{gettextRcmdr} wrapper function for this package.
 #'
 #' @param ... arguments passed to gettext function
-#' @examples
-#' gettextKmg2("gettext")
 #' @seealso \code{\link[Rcmdr:Rcmdr.Utilities]{Rcmdr.Utilities}}
 #'
 #' @rdname util-gettextKmg2
@@ -12,6 +10,6 @@
 #' @export
 gettextKmg2 <- function(...) {
 
-  gettext(..., domain="R-RcmdrPlugin.KMggplot2")
+  gettext(..., domain = "R-RcmdrPlugin.KMggplot2")
 
 }

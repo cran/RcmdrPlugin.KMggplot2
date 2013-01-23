@@ -89,15 +89,22 @@ toolbox <- setRefClass(
         labels     = list(gettextKmg2("Save graph")),
         title      = gettextKmg2("Graph options")
       )
-
-      theme <<- radioboxes$new()
-      theme$front(
-        top       = frame,
-        initValue = themeBase,
-        labels    = list("theme_bw", "theme_simple", "theme_gray"),
-        title     = gettextKmg2("Theme")
+      
+      theme <<- variableListBox(
+        parentWindow     = frame,
+        variableList     = c(
+          "theme_bw", "theme_simple", "theme_classic",
+          "theme_gray", "theme_minimal",
+          "theme_tufte", "theme_economist", "theme_solarized", 
+          "theme_stata", "theme_excel", "theme_igray",
+          "theme_few", "theme_wsj2"
+        ),
+        listHeight       = 5,
+        selectmode       = "single",
+        initialSelection = themeBase,
+        title            = gettextKmg2("Theme")
       )
-
+      
       if (showcolourbox) {
         back_list <<- list(
           size$frame,
@@ -117,6 +124,7 @@ toolbox <- setRefClass(
           family$frame,
           labelRcmdr(frame, text = "    "),
           goption$frame,
+          labelRcmdr(frame, text = "    "),
           theme$frame
         )
       }

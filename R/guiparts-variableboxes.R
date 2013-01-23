@@ -43,11 +43,14 @@ variableboxes <- setRefClass(
       } else {
         length <<- length(types)
       }
-      if (modes == "default") {
-        modes <- lapply(1:length, function(x) "single")
-      } else if (length(types) != length(modes)) {
-        error("length(types) != length(modes)")
+      if (length(modes) == 1) {
+        if (modes == "default") {
+          modes <- lapply(1:length, function(x) "single")
+        }    
       }
+      if (length(types) != length(modes)) {
+        error("length(types) != length(modes)")
+      }   
       if (length(initialSelection) == 1) {
         initialSelection <- lapply(1:length, function(x) initialSelection)
       } else if (length(initialSelection) != length) {
@@ -55,7 +58,7 @@ variableboxes <- setRefClass(
       }
       frame <<- tkframe(top)
 
-      variable <<- lapply(1:length, function(i, types, titles, initialSelection) {
+      variable <<- lapply(1:length, function(i, types, modes, initialSelection, titles) {
           variableListBox(
             frame,
             variableList     = unlist(types[i]),
@@ -63,7 +66,7 @@ variableboxes <- setRefClass(
             initialSelection = unlist(initialSelection[i]),
             title            = unlist(titles[i])
           )
-        }, types, titles, initialSelection
+        }, types, modes, initialSelection, titles
       )
 
       back_list <<- NULL

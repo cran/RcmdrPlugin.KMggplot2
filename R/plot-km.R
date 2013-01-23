@@ -124,10 +124,12 @@ km <- setRefClass(
       cbbox1 <<- checkboxes$new()
       cbbox1$front(
         top        = alternateFrame,
-        initValues = list("0", "0"),
+        initValues = list("0", "0", "0", "0"),
         labels     = list(
             gettextKmg2("Confidence interval"),
-            gettextKmg2("Dot censored symbol")
+            gettextKmg2("Dot censored symbol"),
+            gettextKmg2("P-value (log-rank test)"),
+            gettextKmg2("Reference line at median survival")
         ),
         title      = gettextKmg2("Options")
       )
@@ -197,21 +199,23 @@ km <- setRefClass(
       family <- getSelection(tbbox1$family)
       colour <- getSelection(tbbox1$colour)
       save   <- tclvalue(tbbox1$goption$value[[1]])
-      theme  <- checkTheme(tclvalue(tbbox1$theme$value))
-
+      theme  <- checkTheme(getSelection(tbbox1$theme))
+      
       options(
         kmg2FontSize   = tclvalue(tbbox1$size$value),
         kmg2FontFamily = seq_along(tbbox1$family$varlist)[tbbox1$family$varlist == getSelection(tbbox1$family)] - 1,
         kmg2ColourSet  = seq_along(tbbox1$colour$varlist)[tbbox1$colour$varlist == getSelection(tbbox1$colour)] - 1,
         kmg2SaveGraph  = tclvalue(tbbox1$goption$value[[1]]),
-        kmg2Theme      = tclvalue(tbbox1$theme$value)
+        kmg2Theme      = seq_along(tbbox1$theme$varlist)[tbbox1$theme$varlist == getSelection(tbbox1$theme)] - 1
       )
-
+      
       plotType  <- tclvalue(rbbox1$value)
       tickCount <- tclvalue(lbbox2$fields[[1]]$value)
       confInt   <- tclvalue(cbbox1$value[[1]])
       dotCensor <- tclvalue(cbbox1$value[[2]])
-
+      pValue    <- tclvalue(cbbox1$value[[3]])
+      refMedian <- tclvalue(cbbox1$value[[4]])
+      
       if (is.na(as.numeric(tickCount)) || as.numeric(tickCount) <= 0) {
         tickCount <- "4"
       }
@@ -235,7 +239,7 @@ km <- setRefClass(
         xlab = xlab, xauto = xauto, ylab = ylab, yauto = yauto, zlab = zlab, main = main,
         size = size, family = family, colour = colour, save = save, theme = theme,
         plotType = plotType, tickCount = tickCount, confInt = confInt,
-        dotCensor = dotCensor, zst = zst
+        dotCensor = dotCensor, pValue = pValue, refMedian = refMedian, zst = zst
       )
 
     },
@@ -289,6 +293,46 @@ km <- setRefClass(
         }
 
         registRmlist(.fit)
+        
+        
+        if (parms$pValue == "1" && strataNum > 1) {
+          
+          if (length(parms$s) != 0 && length(parms$t) != 0) {
+            command <- "s, t"
+          } else if (length(parms$s) != 0) {
+            command <- "s"
+          } else if (length(parms$t) != 0) {
+            command <- "t"
+          } else {
+            command <- ""
+          }
+          
+          if (parms$plotType == "2") {
+            ypos <- 0.25
+          } else {
+            ypos <- 0
+          }
+          
+          command <- paste0(
+            ".pval <- plyr::ddply(.df, plyr::.(", command, "),\n",
+            " function(x) {\n",
+            "  data.frame(\n",
+            "   x = 0, y = ", ypos,", df = ", strataNum - 1, ",\n",
+            "   chisq = survival::survdiff(\n",
+            "    survival::Surv(time = x, event = y, type = \"right\") ~ z, x\n",
+            "   )$chisq\n",
+            ")})\n",
+            ".pval$label <- paste0(\"paste(italic(p), \\\" = \", signif(1 - pchisq(.pval$chisq, .pval$df), 3), \"\\\")\")"
+            )
+          registRmlist(.pval)
+          doItAndPrint(command)
+          
+        } else if (parms$pValue == "1" && strataNum == 1) {
+          
+          Message(message = gettextKmg2("There is only 1 group. P-value could not be calculated."),
+                  type = "warning")
+          
+        }
 
         command <- paste0(
           ".fit <- data.frame(",
@@ -300,6 +344,30 @@ km <- setRefClass(
           ".df <- .fit <- data.frame(.fit, .df[, c(", parms$zst, "), drop = FALSE])"
         )
         doItAndPrint(command)
+        
+        if (parms$refMedian == "1") {
+          
+          if (length(parms$s) != 0 && length(parms$t) != 0) {
+            command <- "z, s, t"
+          } else if (length(parms$s) != 0) {
+            command <- "z, s"
+          } else if (length(parms$t) != 0) {
+            command <- "z, t"
+          } else {
+            command <- "z"
+          }
+          
+          command <- paste0(
+            ".med <- plyr::ddply(.fit, plyr::.(", command, "), function(x) {\n",
+            "data.frame(\n",
+            " median = min(subset(x, y < (0.5 + .Machine$double.eps^0.5))$x)\n",
+            ")})"
+          )
+          
+          registRmlist(.med)
+          doItAndPrint(command)
+          
+        }
 
         if (!all(round(.fit$x - .fit$x.1, 1e-13) == 0)) {
           tclvalue(RcmdrTkmessageBox(
@@ -411,6 +479,24 @@ km <- setRefClass(
           "geom_text(data = .nrisk, aes(y = y, x = x, label = Freq, colour = z), show_guide = FALSE, size = ", parms$size , " * 0.282, family = \"", parms$family, "\") + "
         )
       }
+       
+      if (parms$pValue == "1" && length(unique(.df$z)) > 1) {
+        geom <- paste0(
+          geom,
+          "geom_text(data = .pval, aes(y = y, x = x, label = label), colour = \"black\", hjust = 0, vjust = -0.5, parse = TRUE, show_guide = FALSE, size = ", parms$size , " * 0.282, family = \"", parms$family, "\") + "
+        )
+      }
+      
+      if (parms$refMedian == "1" && !all(is.infinite(.med$median))) {
+        geom <- paste0(
+          geom,
+          "geom_vline(data = .med, aes(xintercept = median), colour = \"black\", lty = 2) + "
+        )
+      } else if (parms$refMedian == "1" && all(is.infinite(.med$median))) {
+        Message(message = gettextKmg2("Median survival times did not exist."),
+                type = "warning")
+      }
+      
       geom
 
     },
@@ -544,10 +630,6 @@ km <- setRefClass(
         }
         doItAndPrint(command)
         
-				if (parms$theme != "RcmdrPlugin.KMggplot2::theme_simple") {
-					parms$theme <- paste0("RcmdrPlugin.KMggplot2::", parms$theme)
-				}
-				
         command <- paste0(
           ".plot2 <- ggplot(data = .nrisk, aes(x = x, y = y, label = Freq, colour = z)) + ",
           "geom_text(size = ", parms$size , " * 0.282, family = \"", parms$family, "\") + ",
@@ -555,31 +637,39 @@ km <- setRefClass(
           "scale_y_continuous(limits = c(0, 1)) + ",
           "scale_colour_brewer(palette = \"", parms$colour, "\") + ",
           ylab,
-          parms$theme, "_natrisk(", parms$size, ", \"", parms$family, "\")"
+          "RcmdrPlugin.KMggplot2::theme_natrisk(", parms$theme, ", ", parms$size, ", \"", parms$family, "\")"
         )
         doItAndPrint(command)
 
         command <- paste0(
           ".plot3 <- ggplot(data = subset(.nrisk, x == 0), aes(x = x, y = y, label = z, colour = z)) + ",
-          "geom_text(size = ", parms$size , " * 0.282, family = \"", parms$family, "\") + ",
+          "geom_text(hjust = 0, size = ", parms$size , " * 0.282, family = \"", parms$family, "\") + ",
           "scale_x_continuous(limits = c(-5, 5)) + ",
           "scale_y_continuous(limits = c(0, 1)) + ",
           "scale_colour_brewer(palette = \"", parms$colour, "\") + ",
-          parms$theme, "_natrisk21(", parms$size, ", \"", parms$family, "\")"
+          "RcmdrPlugin.KMggplot2::theme_natrisk21(", parms$theme, ", ", parms$size, ", \"", parms$family, "\")"
         )
         doItAndPrint(command)
-
+        
+        command <- paste0(
+          ".plotb <- ggplot(.df, aes(x = x, y = y)) + geom_blank() + ",
+          "RcmdrPlugin.KMggplot2::theme_natriskbg(", parms$theme, ", ", parms$size, ", \"", parms$family, "\")"
+        )
+        doItAndPrint(command)
+        
         registRmlist(.plot2)
         registRmlist(.plot3)
-
+        registRmlist(.plotb)
+        
         command <- paste0(
           "grid.newpage(); ",
           "pushViewport(viewport(layout = grid.layout(2, 2, ",
-          "heights = unit(c(1, ", length(unique(.fit$z)) + 2, "), c(\"null\", \"lines\")), ",
-          "widths  = unit(c(7, 1), c(\"lines\", \"null\"))))); ",
-          "print(.plot , vp = viewport(layout.pos.row = 1, layout.pos.col = 1:2)); ",
-          "print(.plot2, vp = viewport(layout.pos.row = 2, layout.pos.col = 1:2)); ",
-          "print(.plot3, vp = viewport(layout.pos.row = 2, layout.pos.col = 1  )); ",
+          "heights = unit(c(1, ", length(unique(.fit$z))/2 + 2, "), c(\"null\", \"lines\")), ",
+          "widths  = unit(c(4, 1), c(\"lines\", \"null\"))))); ",
+          "print(.plotb, vp = viewport(layout.pos.row = 1:2, layout.pos.col = 1:2)); ",
+          "print(.plot , vp = viewport(layout.pos.row = 1  , layout.pos.col = 1:2)); ",
+          "print(.plot2, vp = viewport(layout.pos.row = 2  , layout.pos.col = 1:2)); ",
+          "print(.plot3, vp = viewport(layout.pos.row = 2  , layout.pos.col = 1  )); ",
           ".plot <- recordPlot()"
         )
         doItAndPrint(command)

@@ -67,20 +67,22 @@ scattermat <- setRefClass(
       vbbox1 <<- variableboxes$new()
       vbbox1$front(
         top       = top, 
-        types     = list(nonFactors()),
+        types     = list(nonFactors(), Factors()),
         titles    = list(
-            gettextKmg2("Select variables (three or more)")
+            gettextKmg2("Select variables (three or more)"),
+            gettextKmg2("Stratum variable")
         ),
-        modes     = list("multiple"),
-        initialSelection = list(0:2)
+        modes     = list("multiple", "single"),
+        initialSelection = list(0:2, FALSE)
       )
 
       lbbox1 <<- textfields$new()
       lbbox1$front(
         top        = top,
-        initValues = list(""),
+        initValues = list("<auto>", ""),
         titles     = list(
-            gettextKmg2("Title")
+          gettextKmg2("Legend label"),
+          gettextKmg2("Title")
         )
       )
 
@@ -98,7 +100,7 @@ scattermat <- setRefClass(
       )
 
       tbbox1 <<- toolbox$new()
-      tbbox1$front(top, showcolourbox = FALSE)
+      tbbox1$front(top)
 
     },
 
@@ -107,7 +109,7 @@ scattermat <- setRefClass(
       vbbox1$back()
       lbbox1$back()
       rbbox1$back()
-      tbbox1$back(4)
+      tbbox1$back()
 
     },
 
@@ -127,7 +129,7 @@ scattermat <- setRefClass(
 
       x      <- getSelection(vbbox1$variable[[1]])
       y      <- character(0)
-      z      <- character(0)
+      z      <- getSelection(vbbox1$variable[[2]])
 
       s      <- character(0)
       t      <- character(0)
@@ -136,22 +138,23 @@ scattermat <- setRefClass(
       xauto  <- ""
       ylab   <- ""
       yauto  <- ""
-      zlab   <- ""
-      main   <- tclvalue(lbbox1$fields[[1]]$value)
+      zlab   <- tclvalue(lbbox1$fields[[1]]$value)
+      main   <- tclvalue(lbbox1$fields[[2]]$value)
 
       size   <- tclvalue(tbbox1$size$value)
       family <- getSelection(tbbox1$family)
-      colour <- character(0)
+      colour <- getSelection(tbbox1$colour)
       save   <- tclvalue(tbbox1$goption$value[[1]])
-      theme  <- checkTheme(tclvalue(tbbox1$theme$value))
-
+      theme  <- checkTheme(getSelection(tbbox1$theme))
+      
       options(
         kmg2FontSize   = tclvalue(tbbox1$size$value),
         kmg2FontFamily = seq_along(tbbox1$family$varlist)[tbbox1$family$varlist == getSelection(tbbox1$family)] - 1,
+        kmg2ColourSet  = seq_along(tbbox1$colour$varlist)[tbbox1$colour$varlist == getSelection(tbbox1$colour)] - 1,
         kmg2SaveGraph  = tclvalue(tbbox1$goption$value[[1]]),
-        kmg2Theme      = tclvalue(tbbox1$theme$value)
+        kmg2Theme      = seq_along(tbbox1$theme$varlist)[tbbox1$theme$varlist == getSelection(tbbox1$theme)] - 1
       )
-
+      
       smoothType   <- tclvalue(rbbox1$value)
 
       list(
@@ -182,15 +185,63 @@ scattermat <- setRefClass(
 
       command <- do.call(paste, c(parms$x, list(sep = "\", \"")))
       command <- paste0(".df <- ", ActiveDataSet(), "[c(\"", command, "\")]")
-
+      
       doItAndPrint(command)
-      registRmlist(.df)
+      
+      command <- paste0(
+        ".grid <- expand.grid(x = 1:ncol(.df), y = 1:ncol(.df))\n",
+        ".grid <- subset(.grid, x != y)\n",
+        ".all <- do.call(\"rbind\", lapply(1:nrow(.grid), function(i) {\n",
+        "  xcol <- .grid[i, \"x\"]; \n",
+        "  ycol <- .grid[i, \"y\"]; \n",
+        "  data.frame(xvar = names(.df)[ycol], yvar = names(.df)[xcol],\n",
+        "             x = .df[, xcol], y = .df[, ycol], .df)\n",
+        "}))\n",
+        ".all$xvar  <- factor(.all$xvar, levels = names(.df))\n",
+        ".all$yvar  <- factor(.all$yvar, levels = names(.df))\n",
+        ".densities <- do.call(\"rbind\", lapply(1:ncol(.df), function(i) {\n",
+        "  .tmp <- as.data.frame(density(x = .df[, i])[c(\"x\", \"y\")]); \n",
+        "  .tmp$y <- .tmp$y/max(.tmp$y)*diff(range(.tmp$x)) + min(.tmp$x); \n",
+        "  data.frame(xvar = names(.df)[i], yvar = names(.df)[i],\n",
+        "            x = .tmp$x, y = .tmp$y)\n",
+        "}))"
+      )
+      doItAndPrint(command)
+      
+      if (length(parms$z) != 0) {
+        command <- paste0(
+          ".all <- data.frame(.all, z = rep(",
+          ActiveDataSet(), "$", parms$z, ", ",
+          "length = nrow(.all)))\n",
+          ".densities$z <- NA"
+        )
+        doItAndPrint(command)
+      }
+      
+      registRmlist(.grid)
+      registRmlist(.all)
+      registRmlist(.densities)
 
     },
 
     getGgplot = function(parms) {
 
-      "plotmatrix(.df) + "
+      if (length(parms$z) == 0) {
+        ggplot <- paste0(
+          "ggplot(.all, aes(x = x, y = y)) + ",
+          "facet_grid(xvar ~ yvar, scales = \"free\") + ",
+          "geom_point() + ",
+          "geom_line(aes(x = x, y = y), data = .densities) + "
+        )
+      } else {
+        ggplot <- paste0(
+          "ggplot(.all, aes(x = x, y = y, colour = z, shape = z)) + ",
+          "facet_grid(xvar ~ yvar, scales = \"free\") + ",
+          "geom_point() + ",
+          "geom_line(aes(x = x, y = y), data = .densities, colour = \"black\") + "
+        )
+      }
+      ggplot
 
     },
 
@@ -210,7 +261,34 @@ scattermat <- setRefClass(
       geom
 
     },
-
+    getScale = function(parms) {
+      
+      scale <- "scale_y_continuous(expand = c(0.01, 0)) + "
+      if (length(parms$z) != 0) {
+        scale <- paste0(
+          scale,
+          "scale_colour_brewer(palette = \"", parms$colour, "\") + "
+        )
+      }
+      scale
+      
+    },
+    
+    getZlab = function(parms) {
+      
+      if (length(parms$z) == 0) {
+        zlab <- ""
+      } else if (nchar(parms$zlab) == 0) {
+        zlab <- ""
+      } else if (parms$zlab == "<auto>") {
+        zlab <- paste0("labs(colour = \"", parms$z, "\", shape = \"", parms$z, "\") + ")
+      } else {
+        zlab <- paste0("labs(colour = \"", parms$zlab, "\", shape = \"", parms$zlab, "\") + ")
+      }
+      zlab
+      
+    },
+    
     getOpts = function(parms) {
 
       opts <- list()
@@ -220,7 +298,13 @@ scattermat <- setRefClass(
       if (nchar(parms$main) != 0) {
         opts <- c(opts, paste0("plot.title = element_text(size = rel(1.2), vjust = 1.5)"))
       }
-
+      
+      if (length(parms$z) != 0 && nchar(parms$zlab) == 0) {
+        opts <- c(opts, "legend.position = \"right\"", "legend.title = element_blank()")
+      } else if (length(parms$z) != 0 && nchar(parms$zlab) != 0) {
+        opts <- c(opts, "legend.position = \"right\"")
+      }
+      
       if (length(opts) != 0) {
         opts <- do.call(paste, c(opts, list(sep = ", ")))
         opts <- paste0(" + theme(", opts, ")")

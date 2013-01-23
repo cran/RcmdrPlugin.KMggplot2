@@ -160,16 +160,16 @@ discretebar <- setRefClass(
       family <- getSelection(tbbox1$family)
       colour <- getSelection(tbbox1$colour)
       save   <- tclvalue(tbbox1$goption$value[[1]])
-      theme  <- checkTheme(tclvalue(tbbox1$theme$value))
-
+      theme  <- checkTheme(getSelection(tbbox1$theme))
+      
       options(
         kmg2FontSize   = tclvalue(tbbox1$size$value),
         kmg2FontFamily = seq_along(tbbox1$family$varlist)[tbbox1$family$varlist == getSelection(tbbox1$family)] - 1,
         kmg2ColourSet  = seq_along(tbbox1$colour$varlist)[tbbox1$colour$varlist == getSelection(tbbox1$colour)] - 1,
         kmg2SaveGraph  = tclvalue(tbbox1$goption$value[[1]]),
-        kmg2Theme      = tclvalue(tbbox1$theme$value)
+        kmg2Theme      = seq_along(tbbox1$theme$varlist)[tbbox1$theme$varlist == getSelection(tbbox1$theme)] - 1
       )
-
+      
       axisScaling  <- tclvalue(rbbox1$value)
       if (axisScaling == "1") {
         yauto  <- gettextKmg2("Percent")
@@ -266,12 +266,12 @@ discretebar <- setRefClass(
 
       if (length(parms$z) != 0) {
 	      if (parms$axisScaling == "1") {
-		      geom <- "geom_bar(width = 0.9, position = \"fill\") + "
+		      geom <- "geom_bar(width = 0.9, position = \"fill\", stat = \"identity\") + "
 				} else {
-		      geom <- "geom_bar(width = 0.9, position = \"stack\") + "
+		      geom <- "geom_bar(width = 0.9, position = \"stack\", stat = \"identity\") + "
 				}
 			} else {
-	      geom <- "geom_bar(width = 0.9) + "
+	      geom <- "geom_bar(width = 0.9, stat = \"identity\") + "
 			}
       geom
 

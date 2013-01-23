@@ -1,19 +1,19 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: RcmdrPlugin.KMggplot2 0.1-0\n"
+"Project-Id-Version: RcmdrPlugin.KMggplot2 0.2-0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-09-03 18:31+0900\n"
-"PO-Revision-Date: 2012-09-03 18:31+0900\n"
+"POT-Creation-Date: 2013-01-23 19:29+0900\n"
+"PO-Revision-Date: 2013-01-23 19:30+0900\n"
 "Last-Translator: Triad sou. <triadsou@gmail.com>\n"
 "Language-Team: Triad sou. <triadsou@gmail.com>\n"
+"Language: ja_JP\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: gettextKmg2\n"
 "X-Poedit-Basepath: ../\n"
-"X-Poedit-Language: Japanese\n"
-"X-Poedit-Country: JAPAN\n"
 "X-Poedit-SourceCharset: Shift-JIS\n"
+"X-Generator: Poedit 1.5.4\n"
 "X-Poedit-SearchPath-0: ./R\n"
 "X-Poedit-SearchPath-1: ./inst/etc\n"
 
@@ -37,62 +37,59 @@ msgstr "グラフの保存"
 msgid "Graph options"
 msgstr "グラフオプション"
 
-#: R/guiparts-toolbox.R:98
+#: R/guiparts-toolbox.R:105
 msgid "Theme"
 msgstr "テーマ"
 
-#: R/plot-aaa.R:94
+#: R/plot-aaa.R:94 R/plot-km.R:284 R/plot-km.R:375 R/plot-km.R:390
+#: R/plot-qq.R:211 R/plot-qq.R:222 R/plot-qq.R:233 R/plot-qq.R:244
+#: R/plot-qq.R:255 R/plot-qq.R:315
 msgid "Error"
 msgstr "エラー"
 
-#: R/plot-aaa.R:458
-msgid "Plot failed.  Please check the data and variables, or try other options."
-msgstr "プロットに失敗しました。　異なるオプションを試すか、データおよび変数が適切かどうかをチェックしてください。"
+#: R/plot-aaa.R:478
+msgid ""
+"Plot failed.  Please check the data and variables, or try other options."
+msgstr ""
+"プロットに失敗しました。　異なるオプションを試すか、データおよび変数が適切か"
+"どうかをチェックしてください。"
 
 #: R/plot-box.R:74
 msgid "X variable"
 msgstr "横軸変数"
 
-#: R/plot-box.R:75
-#: R/plot-contour.R:74
+#: R/plot-box.R:75 R/plot-contour.R:74 R/plot-line.R:77 R/plot-qq.R:73
+#: R/plot-scatter.R:74
 msgid "Y variable (pick one)"
 msgstr "Y 軸の変数を 1 つ選択"
 
-#: R/plot-box.R:85
-#: R/plot-contour.R:85
-#: R/plot-discretebar.R:84
-#: R/plot-hist.R:85
+#: R/plot-box.R:85 R/plot-contour.R:85 R/plot-discretebar.R:84
+#: R/plot-hist.R:85 R/plot-km.R:87 R/plot-line.R:88 R/plot-pie.R:82
+#: R/plot-scatter.R:85
 msgid "Facet variable in rows"
 msgstr "行方向の Facet 変数"
 
-#: R/plot-box.R:86
-#: R/plot-contour.R:86
-#: R/plot-discretebar.R:85
-#: R/plot-hist.R:86
+#: R/plot-box.R:86 R/plot-contour.R:86 R/plot-discretebar.R:85
+#: R/plot-hist.R:86 R/plot-km.R:88 R/plot-line.R:89 R/plot-pie.R:83
+#: R/plot-scatter.R:86
 msgid "Facet variable in cols"
 msgstr "列方向の Facet 変数"
 
-#: R/plot-box.R:95
-#: R/plot-contour.R:95
-#: R/plot-discretebar.R:94
-#: R/plot-dist.R:84
-#: R/plot-hist.R:95
+#: R/plot-box.R:95 R/plot-contour.R:95 R/plot-discretebar.R:94
+#: R/plot-dist.R:84 R/plot-hist.R:95 R/plot-km.R:97 R/plot-line.R:98
+#: R/plot-qq.R:83 R/plot-scatter.R:95
 msgid "Horizontal axis label"
 msgstr "横軸のラベル"
 
-#: R/plot-box.R:96
-#: R/plot-contour.R:96
-#: R/plot-discretebar.R:95
-#: R/plot-dist.R:85
-#: R/plot-hist.R:96
+#: R/plot-box.R:96 R/plot-contour.R:96 R/plot-discretebar.R:95
+#: R/plot-dist.R:85 R/plot-hist.R:96 R/plot-km.R:98 R/plot-line.R:99
+#: R/plot-qq.R:84 R/plot-scatter.R:96
 msgid "Vertical axis label"
 msgstr "縦軸のラベル"
 
-#: R/plot-box.R:97
-#: R/plot-contour.R:98
-#: R/plot-discretebar.R:97
-#: R/plot-dist.R:86
-#: R/plot-hist.R:97
+#: R/plot-box.R:97 R/plot-contour.R:98 R/plot-discretebar.R:97
+#: R/plot-dist.R:86 R/plot-hist.R:97 R/plot-km.R:100 R/plot-line.R:101
+#: R/plot-pie.R:93 R/plot-qq.R:85 R/plot-scatter.R:98 R/plot-scattermat.R:85
 msgid "Title"
 msgstr "タイトル"
 
@@ -112,7 +109,7 @@ msgstr "95% 信頼区間 (t 分布)"
 msgid "95% C.I. (bootstrap)"
 msgstr "95% 信頼区間 (bootstrap)"
 
-#: R/plot-box.R:110
+#: R/plot-box.R:110 R/plot-line.R:113
 msgid "Plot type"
 msgstr "グラフの形式"
 
@@ -124,10 +121,8 @@ msgstr "横向きのグラフ"
 msgid "Add data point"
 msgstr "データを描画"
 
-#: R/plot-box.R:121
-#: R/plot-contour.R:110
-#: R/plot-factorise.R:83
-#: R/plot-hist.R:130
+#: R/plot-box.R:121 R/plot-contour.R:110 R/plot-factorise.R:83
+#: R/plot-hist.R:130 R/plot-km.R:134
 msgid "Options"
 msgstr "オプション"
 
@@ -135,13 +130,13 @@ msgstr "オプション"
 msgid "Box plot / Violin plot / Confidence interval"
 msgstr "箱ひげ図 / バイオリンプロット / 信頼区間"
 
-#: R/plot-box.R:211
-#: R/plot-contour.R:198
+#: R/plot-box.R:211 R/plot-contour.R:198 R/plot-line.R:236 R/plot-qq.R:199
+#: R/plot-scatter.R:200
 msgid "Y variable is not selected"
 msgstr "縦軸変数が指定されていません。"
 
-#: R/plot-contour.R:73
-#: R/plot-discretebar.R:73
+#: R/plot-contour.R:73 R/plot-discretebar.R:73 R/plot-line.R:76
+#: R/plot-scatter.R:73
 msgid "X variable (pick one)"
 msgstr "X 軸の変数を 1 つ選択"
 
@@ -149,12 +144,14 @@ msgstr "X 軸の変数を 1 つ選択"
 msgid "Z variable (pick one)"
 msgstr "Z 軸の変数を 1 つ選択"
 
-#: R/plot-contour.R:97
-#: R/plot-discretebar.R:96
+#: R/plot-contour.R:97 R/plot-discretebar.R:96 R/plot-km.R:99
+#: R/plot-line.R:100 R/plot-pie.R:92 R/plot-scatter.R:97
+#: R/plot-scattermat.R:84
 msgid "Legend label"
 msgstr "凡例のラベル"
 
-#: R/plot-contour.R:106
+#: R/plot-contour.R:106 R/plot-km.R:108 R/plot-line.R:120 R/plot-line.R:131
+#: R/plot-scatter.R:106 R/plot-scattermat.R:93
 msgid "None"
 msgstr "なし"
 
@@ -162,8 +159,7 @@ msgstr "なし"
 msgid "Coloured lines"
 msgstr "等高線の色分け"
 
-#: R/plot-contour.R:108
-#: R/plot-hist.R:128
+#: R/plot-contour.R:108 R/plot-hist.R:128
 msgid "Heat map"
 msgstr "ヒートマップ"
 
@@ -171,7 +167,7 @@ msgstr "ヒートマップ"
 msgid "Contour plot"
 msgstr "等高線プロット"
 
-#: R/plot-contour.R:192
+#: R/plot-contour.R:192 R/plot-line.R:230 R/plot-scatter.R:194
 msgid "X variable is not selected"
 msgstr "横軸変数が指定されていません。"
 
@@ -183,22 +179,20 @@ msgstr "層別変数が指定されていません。"
 msgid "Each variable must be different."
 msgstr "変数はそれぞれ異なるものを選択してください"
 
-#: R/plot-discretebar.R:74
+#: R/plot-discretebar.R:74 R/plot-km.R:77 R/plot-line.R:78 R/plot-scatter.R:75
+#: R/plot-scattermat.R:73
 msgid "Stratum variable"
 msgstr "層別変数"
 
-#: R/plot-discretebar.R:105
-#: R/plot-hist.R:117
+#: R/plot-discretebar.R:105 R/plot-hist.R:117
 msgid "Percentages"
 msgstr "パーセント"
 
-#: R/plot-discretebar.R:106
-#: R/plot-hist.R:116
+#: R/plot-discretebar.R:106 R/plot-hist.R:116
 msgid "Frequency counts"
 msgstr "度数"
 
-#: R/plot-discretebar.R:108
-#: R/plot-hist.R:119
+#: R/plot-discretebar.R:108 R/plot-hist.R:119
 msgid "Axis scaling"
 msgstr "縦軸の尺度"
 
@@ -206,18 +200,15 @@ msgstr "縦軸の尺度"
 msgid "Bar chart for discrete variables"
 msgstr "棒グラフ (離散変数)"
 
-#: R/plot-discretebar.R:175
-#: R/plot-hist.R:218
+#: R/plot-discretebar.R:175 R/plot-hist.R:218
 msgid "Percent"
 msgstr "パーセント"
 
-#: R/plot-discretebar.R:177
-#: R/plot-hist.R:215
+#: R/plot-discretebar.R:177 R/plot-hist.R:215
 msgid "Count"
 msgstr "度数"
 
-#: R/plot-discretebar.R:194
-#: R/plot-hist.R:236
+#: R/plot-discretebar.R:194 R/plot-hist.R:236 R/plot-pie.R:170
 msgid "Variable is not selected"
 msgstr "変数が指定されていません。"
 
@@ -237,8 +228,7 @@ msgstr "関数の種類"
 msgid "Plot normal distiribution"
 msgstr "正規分布をプロット"
 
-#: R/plot-dist.R:257
-#: R/plot-dist.R:579
+#: R/plot-dist.R:257 R/plot-dist.R:579 R/plot-line.R:121
 msgid "Mean"
 msgstr "平均"
 
@@ -250,8 +240,7 @@ msgstr "標準偏差"
 msgid "Plot t distiribution"
 msgstr "t 分布をプロット"
 
-#: R/plot-dist.R:282
-#: R/plot-dist.R:306
+#: R/plot-dist.R:282 R/plot-dist.R:306
 msgid "df"
 msgstr "自由度"
 
@@ -307,14 +296,11 @@ msgstr "形状パラメータ 2"
 msgid "Plot cauchy distiribution"
 msgstr "コーシー分布をプロット"
 
-#: R/plot-dist.R:429
-#: R/plot-dist.R:454
+#: R/plot-dist.R:429 R/plot-dist.R:454
 msgid "Location"
 msgstr "位置パラメータ"
 
-#: R/plot-dist.R:430
-#: R/plot-dist.R:455
-#: R/plot-dist.R:530
+#: R/plot-dist.R:430 R/plot-dist.R:455 R/plot-dist.R:530 R/plot-line.R:135
 msgid "Scale"
 msgstr "スケールパラメータ"
 
@@ -338,8 +324,7 @@ msgstr "標準偏差 (対数スケール)"
 msgid "Plot gamma distiribution"
 msgstr "ガンマ分布をプロット"
 
-#: R/plot-dist.R:504
-#: R/plot-dist.R:529
+#: R/plot-dist.R:504 R/plot-dist.R:529
 msgid "Shape"
 msgstr "形状パラメータ"
 
@@ -359,9 +344,7 @@ msgstr "二項分布をプロット"
 msgid "Binomial trials"
 msgstr "試行回数"
 
-#: R/plot-dist.R:555
-#: R/plot-dist.R:603
-#: R/plot-dist.R:654
+#: R/plot-dist.R:555 R/plot-dist.R:603 R/plot-dist.R:654
 msgid "Probability of success"
 msgstr "成功確率"
 
@@ -417,7 +400,7 @@ msgstr "連続変数の因子化"
 msgid "Variables are not selected"
 msgstr "変数が指定されていません。"
 
-#: R/plot-hist.R:75
+#: R/plot-hist.R:75 R/plot-pie.R:72
 msgid "Variable (pick one)"
 msgstr "変数を1つ選択"
 
@@ -473,25 +456,42 @@ msgstr "信頼区間"
 msgid "Dot censored symbol"
 msgstr "打ち切り記号をドットにする"
 
-#: R/plot-km.R:164
+#: R/plot-km.R:131
+msgid "P-value (log-rank test)"
+msgstr "P 値を表示 (log-rank 検定)"
+
+#: R/plot-km.R:132
+msgid "Reference line at median survival"
+msgstr "生存期間中央値の参照線"
+
+#: R/plot-km.R:166
 msgid "Kaplan-Meier plot"
 msgstr "Kaplan-Meier プロット"
 
-#: R/plot-km.R:248
+#: R/plot-km.R:252
 msgid "Time variable is not selected."
 msgstr "時間変数が指定されていません。"
 
-#: R/plot-km.R:254
+#: R/plot-km.R:258
 msgid "Event variable is not selected."
 msgstr "イベント変数が指定されていません。"
 
-#: R/plot-km.R:279
+#: R/plot-km.R:283
 msgid "Estimation failed in survfit().  This data may be inappropriate."
 msgstr "survfit() による推定が失敗しました。 データの構造を確認してください。"
 
-#: R/plot-km.R:306
+#: R/plot-km.R:332
+msgid "There is only 1 group. P-value could not be calculated."
+msgstr "層が 1 つしかありません。P 値は計算できませんでした。"
+
+#: R/plot-km.R:374
 msgid "Unknown error.  This plot may be broken."
-msgstr "未知のエラーが発生しました。　正常にプロットできていない可能性があります。"
+msgstr ""
+"未知のエラーが発生しました。　正常にプロットできていない可能性があります。"
+
+#: R/plot-km.R:496
+msgid "Median survival times did not exist."
+msgstr "生存期間中央値は計算できませんでした。"
 
 #: R/plot-line.R:109
 msgid "Line"
@@ -601,28 +601,23 @@ msgstr "ワイブル分布は [0, +Inf) の範囲で定義されています。"
 msgid "Parameter estimation failed."
 msgstr "パラメータの推定に失敗しました。"
 
-#: R/plot-scatter.R:107
-#: R/plot-scattermat.R:92
+#: R/plot-scatter.R:107 R/plot-scattermat.R:94
 msgid "Smoothing with C.I. (linear regression)"
 msgstr "回帰分析 (信頼区間あり)"
 
-#: R/plot-scatter.R:108
-#: R/plot-scattermat.R:93
+#: R/plot-scatter.R:108 R/plot-scattermat.R:95
 msgid "Smoothing without C.I. (linear regression)"
 msgstr "回帰分析 (信頼区間なし)"
 
-#: R/plot-scatter.R:109
-#: R/plot-scattermat.R:94
+#: R/plot-scatter.R:109 R/plot-scattermat.R:96
 msgid "Smoothing with C.I. (loess or gam)"
 msgstr "loess または gam (信頼区間あり)"
 
-#: R/plot-scatter.R:110
-#: R/plot-scattermat.R:95
+#: R/plot-scatter.R:110 R/plot-scattermat.R:97
 msgid "Smoothing without C.I. (loess or gam)"
 msgstr "loess または gam (信頼区間なし)"
 
-#: R/plot-scatter.R:112
-#: R/plot-scattermat.R:97
+#: R/plot-scatter.R:112 R/plot-scattermat.R:99
 msgid "Smoothing type"
 msgstr "スムージングの種類"
 
@@ -630,20 +625,23 @@ msgstr "スムージングの種類"
 msgid "Scatter plot"
 msgstr "散布図"
 
-#: R/plot-scatter.R:322
-#: R/plot-scattermat.R:236
-msgid "Smoothing failed.  Please try another smoothing type, or check the data and variables."
-msgstr "スムージングに失敗しました。 他のスムージング方法試すか、データおよび変数が適切かどうか確認してください。"
+#: R/plot-scatter.R:322 R/plot-scattermat.R:320
+msgid ""
+"Smoothing failed.  Please try another smoothing type, or check the data and "
+"variables."
+msgstr ""
+"スムージングに失敗しました。 他のスムージング方法試すか、データおよび変数が適"
+"切かどうか確認してください。"
 
 #: R/plot-scattermat.R:72
 msgid "Select variables (three or more)"
 msgstr "変数を 3 つ以上選択"
 
-#: R/plot-scattermat.R:116
+#: R/plot-scattermat.R:118
 msgid "Scatter plot matrix"
 msgstr "散布図行列"
 
-#: R/plot-scattermat.R:171
+#: R/plot-scattermat.R:174
 msgid "Please select more than 3 variables."
 msgstr "変数は 3 つ以上選択してください"
 
@@ -766,4 +764,3 @@ msgstr "超幾何分布をプロット..."
 #: inst/etc/tmenus.txt:31
 msgid "Negative binomial distribution..."
 msgstr "負の二項分布をプロット..."
-

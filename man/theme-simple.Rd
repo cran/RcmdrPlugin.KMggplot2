@@ -1,8 +1,6 @@
 \name{theme_simple}
 \alias{theme_simple}
-\alias{theme_simple_natrisk}
-\alias{theme_simple_natrisk21}
-\title{A Simple Black and White Themes}
+\title{A Simple Black and White Theme}
 \usage{
   theme_simple(base_size = 16, base_family = "")
 }
@@ -12,8 +10,7 @@
   \item{base_family}{font family name}
 }
 \description{
-  These functions are modified graphics themes for
-  Kaplan-Meier plots.
+  A Simple Black and White Theme
 }
 \seealso{
   \code{\link[ggplot2:ggplot]{ggplot}}
