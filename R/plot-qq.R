@@ -170,15 +170,15 @@ qq <- setRefClass(
       family <- getSelection(tbbox1$family)
       colour <- character(0)
       save   <- tclvalue(tbbox1$goption$value[[1]])
-      theme  <- checkTheme(tclvalue(tbbox1$theme$value))
-
+      theme  <- checkTheme(getSelection(tbbox1$theme))
+      
       options(
         kmg2FontSize   = tclvalue(tbbox1$size$value),
         kmg2FontFamily = seq_along(tbbox1$family$varlist)[tbbox1$family$varlist == getSelection(tbbox1$family)] - 1,
         kmg2SaveGraph  = tclvalue(tbbox1$goption$value[[1]]),
-        kmg2Theme      = tclvalue(tbbox1$theme$value)
+        kmg2Theme      = seq_along(tbbox1$theme$varlist)[tbbox1$theme$varlist == getSelection(tbbox1$theme)] - 1
       )
-
+      
       distType  <- tclvalue(rbbox1$value)
       distParms <- tclvalue(lbbox2$fields[[1]]$value)
 

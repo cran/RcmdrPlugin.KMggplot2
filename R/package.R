@@ -16,7 +16,10 @@
 #' @aliases RcmdrPlugin.KMggplot2 KMggplot2
 #' @docType package
 #' @keywords hplot package
+#' @import ggthemes
 #' @import gtable
+#' @import plyr
+#' @import Rcmdr
 #' @import RColorBrewer
 #' @import scales
 #' @import survival

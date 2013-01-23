@@ -11,9 +11,6 @@
   This function is a \code{gettextRcmdr} wrapper function
   for this package.
 }
-\examples{
-gettextKmg2("gettext")
-}
 \seealso{
   \code{\link[Rcmdr:Rcmdr.Utilities]{Rcmdr.Utilities}}
 }
