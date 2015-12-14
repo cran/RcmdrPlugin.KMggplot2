@@ -16,9 +16,7 @@
 #' #   z = (z  <- zx*zy)
 #' # )
 #' # save(dataContour, file = "dataContour.RData")
-#'
-#' try(data(dataContour, package = "RcmdrPlugin.KMggplot2"))
-#' try(activeDataSet("dataContour"))
+#' # try(data(dataContour, package = "RcmdrPlugin.KMggplot2"))
 #' @seealso contour-class
 #'
 #' @name dataContour
@@ -59,9 +57,7 @@ NULL
 #' # event[time == 20] <- 0
 #' # dataKm <- data.frame(time, age, height, weight, event, trt, marker, sex)
 #' # save(dataKm, file = "dataKm.RData")
-#'
-#' try(data(dataKm, package = "RcmdrPlugin.KMggplot2"))
-#' try(activeDataSet("dataKm"))
+#' # try(data(dataKm, package = "RcmdrPlugin.KMggplot2"))
 #' @seealso km-class
 #'
 #' @name dataKm
@@ -94,9 +90,7 @@ NULL
 #' # y <- rnorm(144, mu, 25)
 #' # dataLine <- data.frame(date, group, marker, sex, y)
 #' # save(dataLine, file = "dataLine.RData")
-#'
-#' try(data(dataLine, package = "RcmdrPlugin.KMggplot2"))
-#' try(activeDataSet("dataLine"))
+#' # try(data(dataLine, package = "RcmdrPlugin.KMggplot2"))
 #' @seealso line-class
 #'
 #' @name dataLine

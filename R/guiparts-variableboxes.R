@@ -72,9 +72,6 @@ variableboxes <- setRefClass(
       back_list <<- NULL
       for (i in 1:length) {
         back_list <<- c(back_list, list(variable[[i]]$frame))
-        if (i < length) {
-          back_list <<- c(back_list, list(labelRcmdr(frame, text = "    ")))
-        }
       }
 
       return()

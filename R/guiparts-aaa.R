@@ -32,7 +32,7 @@ gparts_base <- setRefClass(
 
   methods = list(
 
-    back = function(perline = 3) {
+    back = function(perline = 4) {
 
       f <- 1
       if (!is.null(back_list)) {
@@ -42,19 +42,26 @@ gparts_base <- setRefClass(
               tkgrid,
               c(back_list[f:i], list(sticky = "nw"))
             )
+            do.call(
+              tkgrid.configure,
+              c(back_list[f:i], list(padx = c(0, 5)))
+            )
           } else if (i %% (perline * 2) == 0) {
             do.call(
               tkgrid,
               c(back_list[(i - (perline * 2) + 1):i], list(sticky = "nw"))
             )
-            tkgrid(labelRcmdr(frame, text = "    "), sticky = "nw")
+            do.call(
+              tkgrid.configure,
+              c(back_list[(i - (perline * 2) + 1):i], list(padx = c(0, 5)))
+            )
             f <- i + 1
           }
         }
       }
 
       tkgrid(frame, sticky = "nw")
-      tkgrid(labelRcmdr(frame, text = "    "), sticky = "nw")
+      tkgrid.configure(frame, pady = c(0, 5))
 
       return()
 

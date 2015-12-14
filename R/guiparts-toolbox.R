@@ -20,7 +20,17 @@
 #' @section Methods:
 #' \describe{
 #' \item{\code{back(perline = 3)}: }{\code{back} method for \code{gparts_base} class.}
-#' \item{\code{front(top, showcolourbox = TRUE, fontSize = unlist(options("kmg2FontSize")), fontSize = unlist(options("kmg2FontSize")), fontFamily = unlist(options("kmg2FontFamily")), colourSet = unlist(options("kmg2ColourSet")), saveGraph = unlist(options("kmg2SaveGraph")), themeBase = unlist(options("kmg2Theme")))}: }{\code{front} method for \code{toolbox} subclass.}
+#' \item{\code{front(top,
+#'   showcolourbox = TRUE, 
+#'   fontSize = unlist(options("kmg2FontSize")), 
+#'   fontSize = unlist(options("kmg2FontSize")), 
+#'   fontFamily = unlist(options("kmg2FontFamily")), 
+#'   colourSet = unlist(options("kmg2ColourSet")), 
+#'   saveGraph = unlist(options("kmg2SaveGraph")), 
+#'   themeBase = unlist(options("kmg2Theme"))
+#' )}: }{
+#'   \code{front} method for \code{toolbox} subclass.
+#' }
 #' }
 #' @family guiparts
 #'
@@ -29,6 +39,7 @@
 #' @rdname guiparts-toolbox
 #' @docType class
 #' @keywords hplot
+#' @importFrom RColorBrewer brewer.pal.info
 #' @export toolbox
 toolbox <- setRefClass(
 
@@ -94,10 +105,12 @@ toolbox <- setRefClass(
         parentWindow     = frame,
         variableList     = c(
           "theme_bw", "theme_simple", "theme_classic",
-          "theme_gray", "theme_minimal",
+          "theme_gray", "theme_minimal", "theme_dark",
           "theme_tufte", "theme_economist", "theme_solarized", 
           "theme_stata", "theme_excel", "theme_igray",
-          "theme_few", "theme_wsj2"
+          "theme_few", "theme_wsj2", "theme_calc", 
+          "theme_fivethirtyeight", "theme_gdocs",
+          "theme_hc", "theme_pander"
         ),
         listHeight       = 5,
         selectmode       = "single",
@@ -108,23 +121,16 @@ toolbox <- setRefClass(
       if (showcolourbox) {
         back_list <<- list(
           size$frame,
-          labelRcmdr(frame, text = "    "),
           family$frame,
-          labelRcmdr(frame, text = "    "),
           colour$frame,
-          labelRcmdr(frame, text = "    "),
           goption$frame,
-          labelRcmdr(frame, text = "    "),
           theme$frame
         )
       } else {
         back_list <<- list(
           size$frame,
-          labelRcmdr(frame, text = "    "),
           family$frame,
-          labelRcmdr(frame, text = "    "),
           goption$frame,
-          labelRcmdr(frame, text = "    "),
           theme$frame
         )
       }
@@ -140,7 +146,15 @@ toolbox <- setRefClass(
 
 #' The \code{front} Method for \code{toolbox} Subclass
 #'
-#' @usage \S4method{front}{toolbox}(top, showcolourbox = TRUE, fontSize = unlist(options("kmg2FontSize")), fontSize = unlist(options("kmg2FontSize")), fontFamily = unlist(options("kmg2FontFamily")), colourSet = unlist(options("kmg2ColourSet")), saveGraph = unlist(options("kmg2SaveGraph")), themeBase = unlist(options("kmg2Theme")))
+#' @usage \S4method{front}{toolbox}(top, 
+#'   showcolourbox = TRUE, 
+#'   fontSize = unlist(options("kmg2FontSize")), 
+#'   fontSize = unlist(options("kmg2FontSize")), 
+#'   fontFamily = unlist(options("kmg2FontFamily")), 
+#'   colourSet = unlist(options("kmg2ColourSet")), 
+#'   saveGraph = unlist(options("kmg2SaveGraph")), 
+#'   themeBase = unlist(options("kmg2Theme"))
+#' )
 #' @param top \code{tkwin} class object; top of widget window.
 #' @param showcolourbox Boolean; whether the colour set frame is shown or not.
 #' @param fontSize Character; the initialization value of the font size.

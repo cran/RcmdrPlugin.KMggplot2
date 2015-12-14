@@ -9,6 +9,7 @@
 #' \item{\code{top}: }{\code{tkwin} class object; parent of widget window.} 
 #' \item{\code{alternateFrame}: }{\code{tkwin} class object; a special frame for some GUI parts.} 
 #' \item{\code{rmlist}: }{List of character; deletable temporary objects.} 
+#' \item{\code{mode}: }{numeric; the executive mode (0 = justDoIt, 1 = doItAndPrint).} 
 #' }
 #' @section Contains:
 #' NULL
@@ -40,20 +41,25 @@
 #' \item{\code{getOpts(parms)}: }{Get other \code{opts}.}
 #' \item{\code{getPlot(parms)}: }{Get the plot object.}
 #' \item{\code{getMessage()}: }{Get the plot error message.}
+#' \item{\code{commandDoIt(command)}: }{An wrapper function for command execution.}
 #' }
 #' @family plot
 #'
+#' @export plot_base
 #' @name plot_base-class
 #' @aliases plot_base
 #' @rdname plot-plot_base
 #' @docType class
+#' @importFrom ggthemes theme_tufte theme_economist theme_solarized theme_stata
+#' @importFrom ggthemes theme_excel theme_igray theme_few theme_calc theme_fivethirtyeight
+#' @importFrom ggthemes theme_gdocs theme_hc theme_pander
+#' @importFrom grid unit
 #' @keywords hplot
-#' @export plot_base
 plot_base <- setRefClass(
 
   Class = "plot_base",
 
-  fields = c("top", "alternateFrame", "rmlist", "codes"),
+  fields = c("top", "alternateFrame", "rmlist", "codes", "mode"),
 
   methods = list(
 
@@ -67,8 +73,11 @@ plot_base <- setRefClass(
 
       setFront()
 
+      # OK
       onOK <- function() {
 
+        # doItAndPrint mode
+        mode <<- 1
         parms <- getParms()
 
         closeDialog()
@@ -79,10 +88,14 @@ plot_base <- setRefClass(
           return()
         } else if (errorCode == FALSE) {
 
-		      logger("\nsapply(c(\"ggplot2\", \"grid\"), require, character.only = TRUE)")
+          if (packageVersion("ggplot2") <= "1.0.1") {
+            logger("\nsapply(c(\"ggplot2\", \"grid\"), require, character.only = TRUE)")
+          } else {
+            logger("require(\"ggplot2\")")
+          }
 
           setDataframe(parms)
-
+          
           .plot <- getPlot(parms)
           logger("print(.plot)")
           response <- tryCatch({
@@ -107,18 +120,63 @@ plot_base <- setRefClass(
         
         removeRmlist()
 
-        # tkinsert(LogWindow(), "end", codes)
-
         activateMenus()
         tkfocus(CommanderWindow())
 
       }
 
       setBack()
+      
 
       # note: The OKCancelHelp() generates "buttonsFrame"
       OKCancelHelp(window = top, helpSubject = getHelp())
+      
+      # Preview
+      onPreview <- function() {
+        
+        # justDoIt mode
+        mode <<- 0
 
+        parms <- getParms()
+
+        errorCode <- checkError(parms)
+        if (errorCode == TRUE) {
+          removeRmlist()
+          return()
+        } else if (errorCode == FALSE) {
+          
+          setDataframe(parms)
+          
+          .plot <- getPlot(parms)
+          response <- tryCatch({
+            print(.plot)
+            ""
+          }, error = function(ex) {
+            tclvalue(RcmdrTkmessageBox(
+              message = getMessage(),
+              title   = gettextKmg2("Error"),
+              icon    = "error",
+              type    = "ok",
+              default = "ok"
+            ))
+          }
+          )
+          if (response == "ok") {
+            removeRmlist()
+            return()
+          }
+        }
+        removeRmlist()
+        
+      }
+      previewButton <- buttonRcmdr(
+        rightButtonsBox, text = gettextKmg2("Preview"), foreground = "yellow",
+        width = nchar(gettextKmg2("Preview")), command = onPreview, 
+        image = "::image::applyIcon", compound = "left"
+        )
+
+      tkgrid(previewButton, row = 0, column = 3, sticky = "nw")
+      tkgrid.configure(previewButton, padx = c(5, 0))
       tkgrid(buttonsFrame, sticky = "nw")
       dialogSuffix()
 
@@ -139,11 +197,16 @@ plot_base <- setRefClass(
       ))
       if (file == "") return()
 
-      if (class(.self)[1] == "km") {
-  	    command <- paste0("RcmdrPlugin.KMggplot2::ggsaveKmg2(filename = \"", file, "\", plot = ", plotName, ")")
-			} else {
-	      command <- paste0("ggsave(filename = \"", file, "\", plot = ", plotName, ")")
-			}
+      if (packageVersion("ggplot2") <= "1.0.1") {
+        # deprecated
+        if (class(.self)[1] == "km") {
+          command <- paste0("RcmdrPlugin.KMggplot2::ggsaveKmg2(filename = \"", file, "\", plot = ", plotName, ")")
+        } else {
+          command <- paste0("ggsave(filename = \"", file, "\", plot = ", plotName, ")")
+        }
+      } else {
+        command <- paste0("ggsave(filename = \"", file, "\", plot = ", plotName, ")")
+      }
       doItAndPrint(command)
 
       return()
@@ -169,7 +232,8 @@ plot_base <- setRefClass(
       if (class(rmlist) != "uninitializedField") {
         command <- do.call(paste, c(rmlist, sep=", "))
         command <- paste0("rm(", command, ")")
-        doItAndPrint(command)
+        commandDoIt(command)
+        rmlist <<- list()
       }
       return()
 
@@ -260,6 +324,8 @@ plot_base <- setRefClass(
         theme <- "theme_gray"
       } else if (index == "theme_minimal") {
         theme <- "theme_minimal"
+      } else if (index == "theme_dark") {
+        theme <- "theme_dark"
       } else if (index == "theme_tufte") {
         theme <- "ggthemes::theme_tufte"
       } else if (index == "theme_economist") {
@@ -276,6 +342,16 @@ plot_base <- setRefClass(
         theme <- "ggthemes::theme_few"
       } else if (index == "theme_wsj2") {
         theme <- "RcmdrPlugin.KMggplot2::theme_wsj2"
+      } else if (index == "theme_calc") {
+        theme <- "ggthemes::theme_calc"
+      } else if (index == "theme_fivethirtyeight") {
+        theme <- "ggthemes::theme_fivethirtyeight"
+      } else if (index == "theme_gdocs") {
+        theme <- "ggthemes::theme_gdocs"
+      } else if (index == "theme_hc") {
+        theme <- "ggthemes::theme_hc"
+      } else if (index == "theme_pander") {
+        theme <- "ggthemes::theme_pander"
       } else {
         theme <- "theme_bw"
       }
@@ -322,7 +398,7 @@ plot_base <- setRefClass(
       command <- do.call(paste, c(var, list(sep = ", ")))
       command <- paste0(".df <- data.frame(", command, ")")
 
-      doItAndPrint(command)
+      commandDoIt(command)
       registRmlist(.df)
 
     },
@@ -344,7 +420,7 @@ plot_base <- setRefClass(
     #' Get Scale
     getScale = function(parms) {
       
-			"scale_y_continuous(expand = c(0.01, 0)) + "
+      "scale_y_continuous(expand = c(0.01, 0)) + "
       
     },
     
@@ -430,10 +506,7 @@ plot_base <- setRefClass(
       
       opts <- list()
       if (length(parms$s) != 0 || length(parms$t) != 0) {
-        opts <- c(opts, "panel.margin = unit(0.3, \"lines\")")
-      }
-      if (nchar(parms$main) != 0) {
-        opts <- c(opts, paste0("plot.title = element_text(size = rel(1.2), vjust = 1.5)"))
+        opts <- c(opts, "panel.margin = grid::unit(0.3, \"lines\")")
       }
 
       if (length(opts) != 0) {
@@ -466,7 +539,7 @@ plot_base <- setRefClass(
         gg, geom, scale, coord, facet,
         xlab, ylab, zlab, main, theme, opts
       )
-      doItAndPrint(command)
+      commandDoIt(command)
       registRmlist(.plot)
       return(.plot)
 
@@ -477,6 +550,18 @@ plot_base <- setRefClass(
 
       gettextKmg2("Plot failed.  Please check the data and variables, or try other options.")
 
+    },
+    
+    #' An wrapper function for command execution
+    commandDoIt = function(command, log = TRUE) {
+      
+      if (mode == 1) {
+        doItAndPrint(command, log = log)
+      } else {
+        justDoIt(command)
+      }
+      NULL
+      
     }
 
   )
@@ -962,6 +1047,22 @@ NULL
 #'
 #' @name getMessage,plot_base-method
 #' @rdname plot-plot_base-getMessage
+#' @docType methods
+#' @keywords hplot
+NULL
+
+
+
+#' An Wrapper Function for Command Execution
+#'
+#' \code{commandDoIt} method gets the plot error message.
+#'
+#' @usage \S4method{commandDoIt}{plot_base}(command)
+#' @param command String; command codes.
+#' @family plot
+#'
+#' @name commandDoIt,plot_base-method
+#' @rdname plot-plot_base-commandDoIt
 #' @docType methods
 #' @keywords hplot
 NULL

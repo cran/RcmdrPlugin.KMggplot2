@@ -9,6 +9,11 @@
 #'
 #' @rdname theme-natriskbg
 #' @keywords color
+#' @importFrom ggplot2 %+replace%
+#' @importFrom ggplot2 theme
+#' @importFrom ggplot2 element_blank
+#' @importFrom ggplot2 element_rect
+#' @importFrom grid unit
 #' @export
 theme_natriskbg <- function(base_theme, base_size = 20, base_family = "") {
   

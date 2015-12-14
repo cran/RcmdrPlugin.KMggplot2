@@ -1,6 +1,7 @@
 #' A Modified Function of \code{ggsave} for \code{recordedplot} Class Objects
 #'
-#' This is a modified function of \code{ggsave} for \code{recordedplot} class objects.
+#' This is a modified function of \code{ggsave} for \code{recordedplot} class
+#' objects (deprecated, left for compatibility purposes).
 #'
 #' @param filename file name/filename of plot
 #' @param plot plot to save, defaults to last plot displayed
@@ -16,36 +17,42 @@
 #'
 #' @rdname util-ggsaveKmg2
 #' @keywords hplot
+#' @importFrom ggplot2 last_plot
+#' @importFrom grDevices dev.off
+#' @importFrom graphics par
+#' @importFrom utils capture.output
 #' @export
 ggsaveKmg2 <- function(
-  filename = default_name(plot), plot = last_plot(), device = default_device(filename), path = NULL, scale= 1, width = par("din")[1], height = par("din")[2], units = c("in", "cm", "mm"), dpi = 300, ...) {
+  filename = default_name(plot), plot = last_plot(), device = default_device(filename),
+  path = NULL, scale = 1, width = par("din")[1], height = par("din")[2], units = c("in", "cm", "mm"),
+  dpi = 300, ...) {
 
   if (!inherits(plot, "ggplot") && !inherits(plot, "recordedplot")) 
     stop("plot should be a ggplot2 plot or a recordedplot plot")
 
   eps <- ps <- function(..., width, height)  
-    grDevices::postscript(..., width=width, height=height, onefile=FALSE,
+    grDevices::postscript(..., width = width, height = height, onefile = FALSE,
       horizontal = FALSE, paper = "special")
   tex <- function(..., width, height) 
-    grDevices::pictex(..., width=width, height=height)
-  pdf <- function(..., version="1.4") 
-    grDevices::pdf(..., version=version)
+    grDevices::pictex(..., width = width, height = height)
+  pdf <- function(..., version = "1.4") 
+    grDevices::pdf(..., version = version)
   svg <- function(...) 
     grDevices::svg(...)
   wmf <- function(..., width, height) 
-    grDevices::win.metafile(..., width=width, height=height)
+    grDevices::win.metafile(..., width = width, height = height)
 
   png <- function(..., width, height) 
-    grDevices::png(...,  width=width, height=height, res = dpi, units = "in")
+    grDevices::png(...,  width = width, height = height, res = dpi, units = "in")
   jpg <- jpeg <- function(..., width, height) 
-    grDevices::jpeg(..., width=width, height=height, res = dpi, units = "in")
+    grDevices::jpeg(..., width = width, height = height, res = dpi, units = "in")
   bmp <- function(..., width, height) 
-    grDevices::bmp(...,  width=width, height=height, res = dpi, units = "in")
+    grDevices::bmp(...,  width = width, height = height, res = dpi, units = "in")
   tiff <- function(..., width, height) 
-    grDevices::tiff(..., width=width, height=height, res = dpi, units = "in")
+    grDevices::tiff(..., width = width, height = height, res = dpi, units = "in")
   
   default_name <- function(plot) { 
-    paste(ggplot2::digest.ggplot(plot), ".pdf", sep="")
+    paste("default_plot.pdf", sep = "")
   }
   
   default_device <- function(filename) {
@@ -82,7 +89,9 @@ ggsaveKmg2 <- function(
   # if either width or height is not specified, display an information message
   # units are those specified by the user
   if (missing(width) || missing(height)) {
-    message("Saving ", prettyNum(convert_from_inches(width * scale, units), digits=3), " x ", prettyNum(convert_from_inches(height * scale, units), digits=3), " ", units, " image")
+    message("Saving ", prettyNum(convert_from_inches(width * scale, units), digits = 3),
+            " x ", prettyNum(convert_from_inches(height * scale, units), digits = 3),
+            " ", units, " image")
   }
 
   width <- width * scale
@@ -91,7 +100,7 @@ ggsaveKmg2 <- function(
   if (!is.null(path)) {
     filename <- file.path(path, filename)
   }
-  device(file=filename, width=width, height=height, ...)
+  device(file = filename, width = width, height = height, ...)
   on.exit(capture.output(dev.off()))
   print(plot)
   

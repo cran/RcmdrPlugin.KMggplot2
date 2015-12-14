@@ -1,11 +1,22 @@
 
+Changes in version 0.2-1 (2015-12-14)
+
+ o Kaplan-Meier plot: fixed a bug was caused by a tie data handling. (Thanks to Dr. M. Felix Freshwater).
+ o Slovenian translation by Matjaž Jeran (Thanks to Matjaž Jeran and their friends).
+ o New ggplot2's theme (theme_dark).
+ o New ggthemes's themes (theme_calc, theme_fivethirtyeight, theme_gdocs, theme_hc, theme_pander).
+ o Preview button.
+ o GUI refinement.
+
+
+
 Changes in version 0.2-0 (2013-01-23)
 
  o Fixed a bug about "modes" in "variableboxes" class.
  o Added ggplot2-0.9.3's themes (classic, minimal).
  o Added ggthemes's themes (tufte, economist, solarized, stata, excel, igray, few, wsj).
- o Kaplan-Meier plot: added a option to show a p-value of the log-rank test.
- o Kaplan-Meier plot: added a option to draw a line at median survival.
+ o Kaplan-Meier plot: added a option to show a p-value of the log-rank test (Thanks to Sharma Vivek).
+ o Kaplan-Meier plot: added a option to draw a line at median survival (Thanks to Sharma Vivek).
  o Scatter plot matrix: fixed bugs and reimplemented, because the ggplot2::plotmatrix() is deprecated.
  o Scatter plot matrix: added stratified plots.
  o Modified start-up for the problem that Commander window open twice when a plug-in is loaded via library() (see Rcmdr 1.9-3 NEWS).
