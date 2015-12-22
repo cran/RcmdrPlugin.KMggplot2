@@ -88,11 +88,7 @@ plot_base <- setRefClass(
           return()
         } else if (errorCode == FALSE) {
 
-          if (packageVersion("ggplot2") <= "1.0.1") {
-            logger("\nsapply(c(\"ggplot2\", \"grid\"), require, character.only = TRUE)")
-          } else {
-            logger("require(\"ggplot2\")")
-          }
+          logger("require(\"ggplot2\")")
 
           setDataframe(parms)
           
@@ -188,25 +184,31 @@ plot_base <- setRefClass(
     savePlot = function(plot) {
 
       plotName <- deparse(substitute(plot))
-      file <- tclvalue(tkgetSaveFile(
-        filetypes = paste(
-          "{\"PNG (Portable Network Graphics)\" {\".png\"}}",
-          "{\"PDF (Portable Document Format)\" {\".pdf\"}}",
-          "{\"JPEG (Joint Photographic Experts Group)\" {\".jpg\"}}"
-        ), defaultextension = "png", initialfile = "GraphSave"
-      ))
+      if (.Platform$OS.type == "windows") {
+        file <- tclvalue(tkgetSaveFile(
+          filetypes = paste("{{All Files} {*}}",
+                            "{{pdf (Portable Document Format)} {.pdf}}",
+                            "{{jpg (Joint Photographic Experts Group)} {.jpg}}",
+                            "{{tiff (Tagged Image File Format)} {.tiff}}",
+                            "{{bmp (Bitmap Image)} {.bmp}}",
+                            "{{svg (Scalable Vector Graphics)} {.svg}}",
+                            "{{png (Portable Network Graphics)} {.png}}"),
+          defaultextension = ".png", initialfile = "Rplots.png"
+        ))
+      } else {
+        file <- tclvalue(tkgetSaveFile(
+          filetypes = paste("{{png (Portable Network Graphics)} {.png}}",
+                            "{{pdf (Portable Document Format)} {.pdf}}",
+                            "{{jpg (Joint Photographic Experts Group)} {.jpg}}",
+                            "{{tiff (Tagged Image File Format)} {.tiff}}",
+                            "{{bmp (Bitmap Image)} {.bmp}}",
+                            "{{svg (Scalable Vector Graphics)} {.svg}}"),
+          initialfile = "Rplots"
+        ))
+      }
       if (file == "") return()
 
-      if (packageVersion("ggplot2") <= "1.0.1") {
-        # deprecated
-        if (class(.self)[1] == "km") {
-          command <- paste0("RcmdrPlugin.KMggplot2::ggsaveKmg2(filename = \"", file, "\", plot = ", plotName, ")")
-        } else {
-          command <- paste0("ggsave(filename = \"", file, "\", plot = ", plotName, ")")
-        }
-      } else {
-        command <- paste0("ggsave(filename = \"", file, "\", plot = ", plotName, ")")
-      }
+      command <- paste0("ggsave(filename = \"", file, "\", plot = ", plotName, ")")
       doItAndPrint(command)
 
       return()
@@ -324,34 +326,62 @@ plot_base <- setRefClass(
         theme <- "theme_gray"
       } else if (index == "theme_minimal") {
         theme <- "theme_minimal"
+      } else if (index == "theme_linedraw") {
+        theme <- "theme_linedraw"
+      } else if (index == "theme_light") {
+        theme <- "theme_light"
       } else if (index == "theme_dark") {
         theme <- "theme_dark"
-      } else if (index == "theme_tufte") {
-        theme <- "ggthemes::theme_tufte"
-      } else if (index == "theme_economist") {
-        theme <- "ggthemes::theme_economist"
-      } else if (index == "theme_solarized") {
-        theme <- "ggthemes::theme_solarized"
-      } else if (index == "theme_stata") {
-        theme <- "ggthemes::theme_stata"
-      } else if (index == "theme_excel") {
-        theme <- "ggthemes::theme_excel"
-      } else if (index == "theme_igray") {
-        theme <- "ggthemes::theme_igray"
-      } else if (index == "theme_few") {
-        theme <- "ggthemes::theme_few"
-      } else if (index == "theme_wsj2") {
-        theme <- "RcmdrPlugin.KMggplot2::theme_wsj2"
+      } else if (index == "theme_base") {
+        theme <- "ggthemes::theme_base"
+        commandDoIt("ggthemes_data <- ggthemes::ggthemes_data")
+        registRmlist(ggthemes_data)
       } else if (index == "theme_calc") {
         theme <- "ggthemes::theme_calc"
+        commandDoIt("ggthemes_data <- ggthemes::ggthemes_data")
+        registRmlist(ggthemes_data)
+      } else if (index == "theme_economist") {
+        theme <- "ggthemes::theme_economist"
+        commandDoIt("ggthemes_data <- ggthemes::ggthemes_data")
+        registRmlist(ggthemes_data)
+      } else if (index == "theme_excel") {
+        theme <- "ggthemes::theme_excel"
+      } else if (index == "theme_few") {
+        theme <- "ggthemes::theme_few"
+        commandDoIt("ggthemes_data <- ggthemes::ggthemes_data")
+        registRmlist(ggthemes_data)
       } else if (index == "theme_fivethirtyeight") {
         theme <- "ggthemes::theme_fivethirtyeight"
+        commandDoIt("ggthemes_data <- ggthemes::ggthemes_data")
+        registRmlist(ggthemes_data)
       } else if (index == "theme_gdocs") {
         theme <- "ggthemes::theme_gdocs"
       } else if (index == "theme_hc") {
         theme <- "ggthemes::theme_hc"
+        commandDoIt("ggthemes_data <- ggthemes::ggthemes_data")
+        registRmlist(ggthemes_data)
+      } else if (index == "theme_par") {
+        theme <- "ggthemes::theme_par"
+        commandDoIt("ggthemes_data <- ggthemes::ggthemes_data")
+        registRmlist(ggthemes_data)
       } else if (index == "theme_pander") {
         theme <- "ggthemes::theme_pander"
+      } else if (index == "theme_solarized") {
+        theme <- "ggthemes::theme_solarized"
+        commandDoIt("ggthemes_data <- ggthemes::ggthemes_data")
+        registRmlist(ggthemes_data)
+      } else if (index == "theme_stata") {
+        theme <- "ggthemes::theme_stata"
+        commandDoIt("ggthemes_data <- ggthemes::ggthemes_data")
+        registRmlist(ggthemes_data)
+      } else if (index == "theme_tufte") {
+        theme <- "ggthemes::theme_tufte"
+      } else if (index == "theme_wsj2") {
+        theme <- "RcmdrPlugin.KMggplot2::theme_wsj2"
+        commandDoIt("ggthemes_data <- ggthemes::ggthemes_data")
+        registRmlist(ggthemes_data)
+      } else if (index == "theme_igray") {
+        theme <- "ggthemes::theme_igray"
       } else {
         theme <- "theme_bw"
       }

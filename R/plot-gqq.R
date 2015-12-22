@@ -203,11 +203,7 @@ gqq <- setRefClass(
       } else {
 
         if (mode == 1) {
-          if (packageVersion("ggplot2") <= "1.0.1") {
-            logger("\nsapply(c(\"ggplot2\", \"grid\"), require, character.only = TRUE)")
-          } else {
-            logger("require(\"ggplot2\")")
-          }
+          logger("require(\"ggplot2\")")
         }
 
         setDataframe(parms)
@@ -331,7 +327,7 @@ gqq <- setRefClass(
             .plot <- getPlot(parms)
             commandDoIt("print(.plot)")
 
-            if (parms$save == "1") savePlot(.plot)
+            if (mode == 1 && parms$save == "1") savePlot(.plot)
 
             errorCode <- 2
           }
