@@ -1,10 +1,10 @@
 ---
-title: "The `extrafont` package"
+title: "Extend with the `extrafont` package"
 author: "Triad sou."
-date: "`r Sys.Date()`"
+date: "2015-12-31"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{The `extrafont` package}
+  %\VignetteIndexEntry{Extend with the `extrafont` package}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -31,4 +31,4 @@ library("RcmdrPlugin.KMggplot2")
 ```
 
 
-If you want to see more details: [Using extrafont - CRAN](https://cran.r-project.org/web/packages/extrafont/README.html)
+If you want to see more details: The Using extrafont section of the README file in the ['extrafont'](https://CRAN.R-project.org/package=extrafont).

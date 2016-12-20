@@ -259,7 +259,7 @@ ghist <- setRefClass(
         var <- c(var, paste0("t = ", ActiveDataSet(), "$", parms$t))
       }
       command <- do.call(paste, c(var, list(sep = ", ")))
-      command <- paste0(".df <- data.frame(", command, ")")
+      command <- paste0(".df <- na.omit(data.frame(", command, "))")
 
       commandDoIt(command)
       registRmlist(.df)
@@ -269,7 +269,7 @@ ghist <- setRefClass(
     getGgplot = function(parms) {
 
       paste0(
-        "ggplot(data = .df, aes(x = x, y = ", parms$y, ")) + "
+        "ggplot(data = .df, aes(x = x, y = ", parms$y, ")) + \n  "
       )
 
     },
@@ -290,16 +290,16 @@ ghist <- setRefClass(
 
       if (parms$heatPlot == "1") {
         geom <- paste0(
-          "geom_histogram(aes(fill = ", parms$y, "), breaks = .nbins) + "
+          "geom_histogram(aes(fill = ", parms$y, "), breaks = .nbins) + \n  "
         )
       } else {
-        geom <- "geom_histogram(breaks = .nbins) + "
+        geom <- "geom_histogram(breaks = .nbins) + \n  "
       }
 
       if (parms$densityPlot == "1") {
         geom <- paste0(
           geom,
-          "stat_density(geom = \"path\", size = 1, alpha = 0.5) + "
+          "stat_density(geom = \"path\", size = 1, alpha = 0.5) + \n  "
         )
       }
       geom
@@ -309,29 +309,59 @@ ghist <- setRefClass(
     getScale = function(parms) {
       
       if (parms$axisScaling == "3") {
-        scale <- "scale_y_continuous(expand = c(0.01, 0), labels = scales::percent_format()) + "
+        scale <- "scale_y_continuous(expand = c(0.01, 0), labels = scales::percent_format()) + \n  "
       } else {
-        scale <- "scale_y_continuous(expand = c(0.01, 0)) + "
+        scale <- "scale_y_continuous(expand = c(0.01, 0)) + \n  "
       }
 
       if (parms$heatPlot == "1") {
         if (parms$axisScaling == "3") {
-          scale <- paste0(
-            scale,
-            "scale_fill_gradient(",
-              "low = RColorBrewer::brewer.pal(3, \"", parms$colour, "\")[2], ", 
+          if (parms$colour == "Default") {
+            scale <- paste0(
+              scale,
+              "scale_fill_continuous(labels = scales::percent_format()) + \n  "
+            )
+          } else if (parms$colour == "Hue") {
+            scale <- paste0(
+              scale,
+              "scale_fill_gradient(low = scale_color_hue()$palette(2)[2], ",
+              "high = scale_color_hue()$palette(2)[1], labels = scales::percent_format()) + \n  "
+            )
+          } else if (parms$colour == "Grey") {
+            scale <- paste0(
+              scale,
+              "scale_fill_gradient(low = scale_color_grey()$palette(2)[2], ",
+              "high = scale_color_grey()$palette(2)[1], labels = scales::percent_format()) + \n  "
+            )
+          } else {
+            scale <- paste0(
+              scale, "scale_fill_gradient(",
+              "low = RColorBrewer::brewer.pal(3, \"", parms$colour,  "\")[2], ",
               "high = RColorBrewer::brewer.pal(3, \"", parms$colour, "\")[1], ",
-              "labels = scales::percent_format()",
-            ") + "
-          )
+              "labels = scales::percent_format()) + \n  "
+            )
+          }
         } else {
-          scale <- paste0(
-            scale,
-            "scale_fill_gradient(",
-              "low = RColorBrewer::brewer.pal(3, \"", parms$colour, "\")[2], ", 
-              "high = RColorBrewer::brewer.pal(3, \"", parms$colour, "\")[1]",
-            ") + "
-          )
+          if (parms$colour == "Default") {
+          } else if (parms$colour == "Hue") {
+            scale <- paste0(
+              scale,
+              "scale_fill_gradient(low = scale_color_hue()$palette(2)[2], ",
+              "high = scale_color_hue()$palette(2)[1]) + \n  "
+            )
+          } else if (parms$colour == "Grey") {
+            scale <- paste0(
+              scale,
+              "scale_fill_gradient(low = scale_color_grey()$palette(2)[2], ",
+              "high = scale_color_grey()$palette(2)[1]) + \n  "
+            )
+          } else {
+            scale <- paste0(
+              scale, "scale_fill_gradient(",
+              "low = RColorBrewer::brewer.pal(3, \"", parms$colour,  "\")[2], ",
+              "high = RColorBrewer::brewer.pal(3, \"", parms$colour, "\")[1]) + \n  "
+            )
+          }
         }
       }
       scale
@@ -342,7 +372,7 @@ ghist <- setRefClass(
 
       opts <- list()
       if (length(parms$s) != 0 || length(parms$t) != 0) {
-        opts <- c(opts, "panel.margin = unit(0.3, \"lines\")")
+        opts <- c(opts, "panel.spacing = unit(0.3, \"lines\")")
       }
 
       if (parms$heatPlot == "1") {
@@ -351,7 +381,7 @@ ghist <- setRefClass(
 
       if (length(opts) != 0) {
         opts <- do.call(paste, c(opts, list(sep = ", ")))
-        opts <- paste0(" + theme(", opts, ")")
+        opts <- paste0(" + \n  theme(", opts, ")")
       } else {
         opts <- ""
       }
