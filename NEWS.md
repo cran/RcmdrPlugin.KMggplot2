@@ -2,6 +2,11 @@
 # RcmdrPlugin.KMggplot2 package
 
 
+## Changes in version 0.2-5 (2018-02-20)
+* Fixed a bug: The size of dots in Beeswarm plots (Thanks to Prof. José G. Conde).
+* Fixed a bug: A namespace problem in r-devel-linux-x86_64-fedora-clang/gcc.
+
+
 ## Changes in version 0.2-4 (2016-12-20)
 
 * ggplot2 2.2.0 was supported.

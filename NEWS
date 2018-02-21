@@ -2,13 +2,18 @@
 # RcmdrPlugin.KMggplot2 package
 
 
+## Changes in version 0.2-5 (2018-02-20)
+* Fixed a bug: The size of dots in Beeswarm plots (Thanks to Prof. José G. Conde).
+* Fixed a bug: A namespace problem in r-devel-linux-x86_64-fedora-clang/gcc.
+
+
 ## Changes in version 0.2-4 (2016-12-20)
 
 * ggplot2 2.2.0 was supported.
 * Added ggplot2's colour/fill scales (scale_*_hue, scale_*_grey).
 * New plot: Beeswarm plot in Box plot (Thanks to DailyFunky @EpiFunky).
 * New function: lastcom() function to list the last command.
-* Fixed a bug: Histogram with missing values (Thanks to Dr. José G. Conde).
+* Fixed a bug: Histogram with missing values (Thanks to Prof. José G. Conde).
 * Fixed a bug: Boxplot with an inappropriate jitter position (Thanks to Dr. M. Felix Freshwater).
 
 

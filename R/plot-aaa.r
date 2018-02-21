@@ -112,7 +112,7 @@ plot_base <- setRefClass(
             removeRmlist()
             return()
           }
-          if (parms$save == "1") savePlot(.plot)
+          if (parms$save == "1") .self$savePlot(.plot)
           
           pos <- 1
           assign(".lastcom", paste0(codes, "\n"), envir = as.environment(pos))

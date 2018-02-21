@@ -465,9 +465,9 @@ gkm <- setRefClass(
 
         if (mode == 1 && parms$save == "1") {
           if (parms$plotType == "3") {
-            savePlot(.plot, useGgsave = FALSE)
+            .self$savePlot(.plot, useGgsave = FALSE)
           } else {
-            savePlot(.plot)
+            .self$savePlot(.plot)
           }
         }
         

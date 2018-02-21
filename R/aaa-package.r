@@ -13,6 +13,7 @@
 #' \code{\link[survival:survfit]{survfit}},
 #' \code{\link[RColorBrewer:RColorBrewer]{RColorBrewer}}
 #' \code{\link[ggthemes:ggthemes]{ggthemes}}
+#' \code{\link[scales:scales]{scales}}
 #'
 #' @name RcmdrPlugin.KMggplot2-package
 #' @rdname package-RcmdrPlugin.KMggplot2

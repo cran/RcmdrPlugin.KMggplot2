@@ -337,7 +337,7 @@ gbox <- setRefClass(
       } else if (parms$dataPoint == "3") {
         geom <- paste0(
           geom,
-          "geom_dotplot(binaxis = \"y\", stackdir = \"center\", position = position_dodge(width = 0.9), binwidth = 0.75) + \n  "
+          "geom_dotplot(binaxis = \"y\", stackdir = \"center\", position = position_dodge(width = 0.9)) + \n  "
         )
       }
       geom
