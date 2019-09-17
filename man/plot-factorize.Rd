@@ -2,8 +2,8 @@
 % Please edit documentation in R/plot-factorise.r
 \docType{class}
 \name{factorize-class}
-\alias{factorize}
 \alias{factorize-class}
+\alias{factorize}
 \title{Factorize Subclass}
 \description{
 \code{factorize} class is a subclass for factorizing numeric variables.
@@ -11,6 +11,7 @@
 \details{
 This class is a subclass which show dialog boxes of a factorizer for graphics editing.
 }
+
 \section{Fields}{
 
 \describe{
@@ -58,6 +59,7 @@ NULL
 \item{\code{commandDoIt(command)}: }{An wrapper function for command execution.}
 }
 }
+
 \seealso{
 Other plot: \code{\link{checkError,plot_base-method}},
   \code{\link{checkTheme,plot_base-method}},
@@ -94,7 +96,5 @@ Other plot: \code{\link{checkError,plot_base-method}},
   \code{\link{setDataframe,plot_base-method}},
   \code{\link{setFront,plot_base-method}}
 }
-\keyword{Plot}
-\keyword{Windows}
+\concept{plot}
 \keyword{hplot}
-

@@ -6,8 +6,8 @@
 \usage{
 ggsaveKmg2(filename = default_name(plot), plot = last_plot(),
   device = default_device(filename), path = NULL, scale = 1,
-  width = par("din")[1], height = par("din")[2], units = c("in", "cm",
-  "mm"), dpi = 300, ...)
+  width = par("din")[1], height = par("din")[2], units = c("in",
+  "cm", "mm"), dpi = 300, ...)
 }
 \arguments{
 \item{filename}{file name/filename of plot}
@@ -38,4 +38,3 @@ objects.
 \code{\link[ggplot2:ggsave]{ggsave}}
 }
 \keyword{hplot}
-

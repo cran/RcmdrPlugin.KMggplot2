@@ -1,4 +1,4 @@
-#' @importFrom grDevices windowsFonts
+#' @rawNamespace if (tools:::.OStype() == "windows") {importFrom(grDevices,windowsFonts)}
 .onAttach <- function(libname, pkgname) {
 
   if (!interactive()) return()

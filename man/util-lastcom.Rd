@@ -10,4 +10,3 @@ lastcom()
 This function lists the last command is executed by \code{RcmdrPlugin.KMggplot2}
 }
 \keyword{documentation}
-

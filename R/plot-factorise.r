@@ -61,7 +61,7 @@ factorize <- setRefClass(
   
   methods = list(
     
-    #' Plot Windows
+    # Plot Windows
     plotWindow = function() {
       
       # note: The initializeDialog() generates "top"

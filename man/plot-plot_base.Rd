@@ -2,8 +2,8 @@
 % Please edit documentation in R/plot-aaa.r
 \docType{class}
 \name{plot_base-class}
-\alias{plot_base}
 \alias{plot_base-class}
+\alias{plot_base}
 \title{Base Class for Plot Windows}
 \description{
 \code{plot_base} class is the base class for plot windows.
@@ -11,6 +11,7 @@
 \details{
 This class is a framework for implementing subclasses which show dialog boxes for graphics editing.
 }
+
 \section{Fields}{
 
 \describe{
@@ -58,6 +59,7 @@ NULL
 \item{\code{commandDoIt(command)}: }{An wrapper function for command execution.}
 }
 }
+
 \seealso{
 Other plot: \code{\link{checkError,plot_base-method}},
   \code{\link{checkTheme,plot_base-method}},
@@ -94,44 +96,5 @@ Other plot: \code{\link{checkError,plot_base-method}},
   \code{\link{setDataframe,plot_base-method}},
   \code{\link{setFront,plot_base-method}}
 }
-\keyword{An}
-\keyword{Back}
-\keyword{Check}
-\keyword{Coord}
-\keyword{Error}
-\keyword{Facet}
-\keyword{Front}
-\keyword{Geom}
-\keyword{Get}
-\keyword{Ggplot}
-\keyword{Help}
-\keyword{List}
-\keyword{Main}
-\keyword{Message}
-\keyword{Opts}
-\keyword{Parameters}
-\keyword{Plot}
-\keyword{Register}
-\keyword{Remove}
-\keyword{Save}
-\keyword{Scale}
-\keyword{Set}
-\keyword{Theme}
-\keyword{Title}
-\keyword{Window}
-\keyword{Windows}
-\keyword{Xlab}
-\keyword{Ylab}
-\keyword{Zlab}
-\keyword{\code{data.frame}}
-\keyword{\code{rm()}}
-\keyword{command}
-\keyword{execution}
-\keyword{for}
-\keyword{function}
+\concept{plot}
 \keyword{hplot}
-\keyword{length.}
-\keyword{themes.}
-\keyword{variable}
-\keyword{wrapper}
-

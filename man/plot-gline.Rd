@@ -2,8 +2,8 @@
 % Please edit documentation in R/plot-gline.r
 \docType{class}
 \name{gline-class}
-\alias{gline}
 \alias{gline-class}
+\alias{gline}
 \title{Line Chart Subclass}
 \description{
 \code{gline} class is a subclass for line charts.
@@ -11,6 +11,7 @@
 \details{
 This class is a subclass which show dialog boxes of line charts for graphics editing.
 }
+
 \section{Fields}{
 
 \describe{
@@ -63,6 +64,7 @@ NULL
 \item{\code{commandDoIt(command)}: }{An wrapper function for command execution.}
 }
 }
+
 \seealso{
 \code{\link[ggplot2:scale_date]{scale_date}}
 
@@ -101,5 +103,5 @@ Other plot: \code{\link{checkError,plot_base-method}},
   \code{\link{setDataframe,plot_base-method}},
   \code{\link{setFront,plot_base-method}}
 }
+\concept{plot}
 \keyword{hplot}
-

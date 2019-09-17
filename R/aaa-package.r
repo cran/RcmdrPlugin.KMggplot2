@@ -4,9 +4,6 @@
 #' Q-Q plot, box plot, errorbar plot, scatter plot, line chart, pie chart,
 #' bar chart, contour plot, and distribution plot.
 #'
-#' @author
-#' Author: Triad sou. and Kengo NAGASHIMA
-#' Maintainer: Triad sou. \email{triadsou@@gmail.com}
 #' @seealso
 #' \code{\link[Rcmdr:Rcmdr]{Rcmdr}},
 #' \code{\link[ggplot2:ggplot]{ggplot2}},

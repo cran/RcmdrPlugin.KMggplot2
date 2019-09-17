@@ -19,6 +19,6 @@ Or the development version from github:
 
 ```R
 # install.packages("devtools")
-devtools::install_github("triadsou/RcmdrPlugin.KMggplot2")
+devtools::install_github("nshi-stat/RcmdrPlugin.KMggplot2")
 ```
 

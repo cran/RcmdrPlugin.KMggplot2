@@ -28,5 +28,5 @@ Other guiparts: \code{\link{checkboxes-class}},
   \code{\link{toolbox-class}},
   \code{\link{variableboxes-class}}
 }
+\concept{guiparts}
 \keyword{hplot}
-

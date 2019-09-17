@@ -40,7 +40,7 @@
 #' @docType class
 #' @keywords hplot
 #' @importFrom RColorBrewer brewer.pal.info
-#' @importFrom grDevices windowsFonts postscriptFonts
+#' @importFrom grDevices postscriptFonts
 #' @export toolbox
 toolbox <- setRefClass(
 
@@ -117,12 +117,13 @@ toolbox <- setRefClass(
           "theme_bw", "theme_simple", "theme_classic",
           "theme_grey", "theme_minimal",
           "theme_linedraw", "theme_light", "theme_dark",
-          "theme_base", "theme_calc", "theme_economist", 
-          "theme_excel", "theme_few", "theme_fivethirtyeight", 
-          "theme_foundation", "theme_gdocs", "theme_hc",
-          "theme_igray", "theme_pander", "theme_par",
-          "theme_solarized", "theme_stata", "theme_tufte",
-          "theme_wsj2"
+          "theme_base", "theme_calc", "theme_clean",
+          "theme_economist", "theme_economist_white",
+          "theme_excel", "theme_excel_new", "theme_few",
+          "theme_fivethirtyeight", "theme_foundation",
+          "theme_gdocs", "theme_hc", "theme_igray", "theme_pander",
+          "theme_par", "theme_solarized", "theme_solarized_2",
+          "theme_stata", "theme_tufte", "theme_wsj"
         ),
         listHeight       = 5,
         selectmode       = "single",

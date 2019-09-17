@@ -46,5 +46,5 @@ Other plot: \code{\link{checkError,plot_base-method}},
   \code{\link{setBack,plot_base-method}},
   \code{\link{setDataframe,plot_base-method}}
 }
+\concept{plot}
 \keyword{hplot}
-

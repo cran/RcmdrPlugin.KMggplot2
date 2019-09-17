@@ -2,18 +2,14 @@
 % Please edit documentation in R/aaa-package.r
 \docType{package}
 \name{RcmdrPlugin.KMggplot2-package}
-\alias{KMggplot2}
-\alias{RcmdrPlugin.KMggplot2}
 \alias{RcmdrPlugin.KMggplot2-package}
+\alias{RcmdrPlugin.KMggplot2}
+\alias{KMggplot2}
 \title{R Commander Plug-in for Data Visualization with 'ggplot2'}
 \description{
 A GUI front-end for 'ggplot2' supports Kaplan-Meier plot, histogram,
 Q-Q plot, box plot, errorbar plot, scatter plot, line chart, pie chart,
 bar chart, contour plot, and distribution plot.
-}
-\author{
-Author: Triad sou. and Kengo NAGASHIMA
-Maintainer: Triad sou. \email{triadsou@gmail.com}
 }
 \seealso{
 \code{\link[Rcmdr:Rcmdr]{Rcmdr}},
@@ -21,7 +17,7 @@ Maintainer: Triad sou. \email{triadsou@gmail.com}
 \code{\link[survival:survfit]{survfit}},
 \code{\link[RColorBrewer:RColorBrewer]{RColorBrewer}}
 \code{\link[ggthemes:ggthemes]{ggthemes}}
+\code{\link[scales:scales]{scales}}
 }
 \keyword{hplot}
 \keyword{package}
-

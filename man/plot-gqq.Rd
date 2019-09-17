@@ -2,8 +2,8 @@
 % Please edit documentation in R/plot-gqq.r
 \docType{class}
 \name{gqq-class}
-\alias{gqq}
 \alias{gqq-class}
+\alias{gqq}
 \title{Q-Q Plot Subclass}
 \description{
 \code{gqq} class is a subclass for Q-Q plots.
@@ -11,6 +11,7 @@
 \details{
 This class is a subclass which show dialog boxes of Q-Q plots for graphics editing.
 }
+
 \section{Fields}{
 
 \describe{
@@ -61,6 +62,7 @@ NULL
 \item{\code{commandDoIt(command)}: }{An wrapper function for command execution.}
 }
 }
+
 \seealso{
 Other plot: \code{\link{checkError,plot_base-method}},
   \code{\link{checkTheme,plot_base-method}},
@@ -97,5 +99,5 @@ Other plot: \code{\link{checkError,plot_base-method}},
   \code{\link{setDataframe,plot_base-method}},
   \code{\link{setFront,plot_base-method}}
 }
+\concept{plot}
 \keyword{hplot}
-

@@ -50,9 +50,12 @@
 #' @aliases plot_base
 #' @rdname plot-plot_base
 #' @docType class
-#' @importFrom ggthemes theme_tufte theme_economist theme_solarized theme_stata
-#' @importFrom ggthemes theme_excel theme_igray theme_few theme_calc theme_fivethirtyeight
-#' @importFrom ggthemes theme_gdocs theme_hc theme_pander
+#' @importFrom ggthemes theme_base theme_calc theme_clean theme_economist
+#' @importFrom ggthemes theme_economist_white theme_excel theme_excel_new
+#' @importFrom ggthemes theme_few theme_fivethirtyeight theme_foundation
+#' @importFrom ggthemes theme_gdocs theme_hc theme_igray theme_pander
+#' @importFrom ggthemes theme_par theme_solarized theme_solarized_2
+#' @importFrom ggthemes theme_stata theme_tufte theme_wsj
 #' @importFrom grid unit
 #' @keywords hplot
 plot_base <- setRefClass(
@@ -63,7 +66,7 @@ plot_base <- setRefClass(
   
   methods = list(
     
-    #' Plot Windows
+    # Plot Windows
     plotWindow = function() {
       
       # note: The initializeDialog() generates "top"
@@ -184,7 +187,7 @@ plot_base <- setRefClass(
       
     },
     
-    #' Save Plot
+    # Save Plot
     savePlot = function(plot, useGgsave = TRUE) {
       
       plotName <- deparse(substitute(plot))
@@ -223,7 +226,7 @@ plot_base <- setRefClass(
       
     },
     
-    #' Register \code{rm()} List
+    # Register \code{rm()} List
     registRmlist = function(object) {
       
       txtObjects <- deparse(substitute(object))
@@ -236,7 +239,7 @@ plot_base <- setRefClass(
       
     },
     
-    #' Remove \code{rm()} List
+    # Remove \code{rm()} List
     removeRmlist = function() {
       
       if (class(rmlist) != "uninitializedField") {
@@ -249,35 +252,35 @@ plot_base <- setRefClass(
       
     },
     
-    #' Set Front
+    # Set Front
     setFront = function() {
       
       return()
       
     },
     
-    #' Set Back
+    # Set Back
     setBack = function() {
       
       return()
       
     },
     
-    #' Get Window Title
+    # Get Window Title
     getWindowTitle = function() {
       
       "plot_base"
       
     },
     
-    #' Get Help
+    # Get Help
     getHelp = function() {
       
       "plot_base"
       
     },
     
-    #' Get Parameters
+    # Get Parameters
     getParms = function() {
       
       x      <- "x"
@@ -321,7 +324,7 @@ plot_base <- setRefClass(
       
     },
     
-    #' Check themes.
+    # Check themes.
     checkTheme = function(index) {
       
       if (index == "theme_bw") {
@@ -342,56 +345,44 @@ plot_base <- setRefClass(
         theme <- "theme_dark"
       } else if (index == "theme_base") {
         theme <- "ggthemes::theme_base"
-        commandDoIt("ggthemes_data <- ggthemes::ggthemes_data")
-        registRmlist(ggthemes_data)
       } else if (index == "theme_calc") {
         theme <- "ggthemes::theme_calc"
-        commandDoIt("ggthemes_data <- ggthemes::ggthemes_data")
-        registRmlist(ggthemes_data)
+      } else if (index == "theme_clean") {
+        theme <- "ggthemes::theme_clean"
       } else if (index == "theme_economist") {
         theme <- "ggthemes::theme_economist"
-        commandDoIt("ggthemes_data <- ggthemes::ggthemes_data")
-        registRmlist(ggthemes_data)
+      } else if (index == "theme_economist_white") {
+        theme <- "ggthemes::theme_economist_white"
       } else if (index == "theme_excel") {
         theme <- "ggthemes::theme_excel"
+      } else if (index == "theme_excel_new") {
+        theme <- "ggthemes::theme_excel_new"
       } else if (index == "theme_few") {
         theme <- "ggthemes::theme_few"
-        commandDoIt("ggthemes_data <- ggthemes::ggthemes_data")
-        registRmlist(ggthemes_data)
       } else if (index == "theme_fivethirtyeight") {
         theme <- "ggthemes::theme_fivethirtyeight"
-        commandDoIt("ggthemes_data <- ggthemes::ggthemes_data")
-        registRmlist(ggthemes_data)
       } else if (index == "theme_foundation") {
         theme <- "ggthemes::theme_foundation"
       } else if (index == "theme_gdocs") {
         theme <- "ggthemes::theme_gdocs"
       } else if (index == "theme_hc") {
         theme <- "ggthemes::theme_hc"
-        commandDoIt("ggthemes_data <- ggthemes::ggthemes_data")
-        registRmlist(ggthemes_data)
       } else if (index == "theme_igray") {
         theme <- "ggthemes::theme_igray"
       } else if (index == "theme_pander") {
         theme <- "ggthemes::theme_pander"
       } else if (index == "theme_par") {
         theme <- "ggthemes::theme_par"
-        commandDoIt("ggthemes_data <- ggthemes::ggthemes_data")
-        registRmlist(ggthemes_data)
       } else if (index == "theme_solarized") {
         theme <- "ggthemes::theme_solarized"
-        commandDoIt("ggthemes_data <- ggthemes::ggthemes_data")
-        registRmlist(ggthemes_data)
+      } else if (index == "theme_solarized_2") {
+        theme <- "ggthemes::theme_solarized_2"
       } else if (index == "theme_stata") {
         theme <- "ggthemes::theme_stata"
-        commandDoIt("ggthemes_data <- ggthemes::ggthemes_data")
-        registRmlist(ggthemes_data)
       } else if (index == "theme_tufte") {
         theme <- "ggthemes::theme_tufte"
-      } else if (index == "theme_wsj2") {
-        theme <- "RcmdrPlugin.KMggplot2::theme_wsj2"
-        commandDoIt("ggthemes_data <- ggthemes::ggthemes_data")
-        registRmlist(ggthemes_data)
+      } else if (index == "theme_wsj") {
+        theme <- "ggthemes::theme_wsj"
       } else {
         theme <- "theme_bw"
       }
@@ -399,7 +390,7 @@ plot_base <- setRefClass(
       
     },
     
-    #' Check variable length.
+    # Check variable length.
     checkVariable = function(var) {
       
       if (length(var) > 1) {
@@ -409,14 +400,14 @@ plot_base <- setRefClass(
       
     },
     
-    #' Check Error
+    # Check Error
     checkError = function(parms) {
       
       errorCode <- FALSE
       
     },
     
-    #' Set \code{data.frame}
+    # Set \code{data.frame}
     setDataframe = function(parms) {
       
       var <- list()
@@ -443,35 +434,35 @@ plot_base <- setRefClass(
       
     },
     
-    #' Get Ggplot
+    # Get Ggplot
     getGgplot = function(parms) {
       
       "ggplot(data.frame(1), aes(x = 1, y = 1)) + \n  "
       
     },
     
-    #' Get Geom
+    # Get Geom
     getGeom = function(parms) {
       
       "geom_point() + "
       
     },
     
-    #' Get Scale
+    # Get Scale
     getScale = function(parms) {
       
       "scale_y_continuous(expand = c(0.01, 0)) + \n  "
       
     },
     
-    #' Get Coord
+    # Get Coord
     getCoord = function(parms) {
       
       ""
       
     },
     
-    #' Get Facet
+    # Get Facet
     getFacet = function(parms) {
       
       if (length(parms$s) != 0 && length(parms$t) != 0) {
@@ -487,7 +478,7 @@ plot_base <- setRefClass(
       
     },
     
-    #' Get Xlab
+    # Get Xlab
     getXlab = function(parms) {
       
       if (nchar(parms$xlab) == 0) {
@@ -501,7 +492,7 @@ plot_base <- setRefClass(
       
     },
     
-    #' Get Ylab
+    # Get Ylab
     getYlab = function(parms) {
       
       if (nchar(parms$ylab) == 0) {
@@ -515,14 +506,14 @@ plot_base <- setRefClass(
       
     },
     
-    #' Get Zlab
+    # Get Zlab
     getZlab = function(parms) {
       
       ""
       
     },
     
-    #' Get Main
+    # Get Main
     getMain = function(parms) {
       
       if (nchar(parms$main) == 0) {
@@ -534,14 +525,14 @@ plot_base <- setRefClass(
       
     },
     
-    #' Get Theme
+    # Get Theme
     getTheme = function(parms) {
       
       paste0(parms$theme, "(base_size = ", parms$size, ", base_family = \"", parms$family, "\")")
       
     },
     
-    #' Get Opts
+    # Get Opts
     getOpts = function(parms) {
       
       opts <- list()
@@ -559,7 +550,7 @@ plot_base <- setRefClass(
       
     },
     
-    #' Get Plot
+    # Get Plot
     getPlot = function(parms) {
       
       gg    <- getGgplot(parms)
@@ -585,14 +576,14 @@ plot_base <- setRefClass(
       
     },
     
-    #' Get Plot Error Message
+    # Get Plot Error Message
     getMessage = function() {
       
       gettextKmg2("Plot failed.  Please check the data and variables, or try other options.")
       
     },
     
-    #' An wrapper function for command execution
+    # An wrapper function for command execution
     commandDoIt = function(command, log = FALSE) {
       
       if (codes == "") {

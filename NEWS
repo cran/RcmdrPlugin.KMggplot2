@@ -2,6 +2,11 @@
 # RcmdrPlugin.KMggplot2 package
 
 
+## Changes in version 0.2-6 (2019-09-17)
+* Fixed a bug: Rd files.
+* New ggthemes's themes (theme_clean, theme_economist_white, theme_excel_new, theme_solarized_2).
+
+
 ## Changes in version 0.2-5 (2018-02-20)
 * Fixed a bug: The size of dots in Beeswarm plots (Thanks to Prof. José G. Conde).
 * Fixed a bug: A namespace problem in r-devel-linux-x86_64-fedora-clang/gcc.

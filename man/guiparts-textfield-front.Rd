@@ -34,5 +34,5 @@ Other guiparts: \code{\link{back,gparts_base-method}},
   \code{\link{toolbox-class}},
   \code{\link{variableboxes-class}}
 }
+\concept{guiparts}
 \keyword{hplot}
-
