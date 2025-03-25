@@ -4,14 +4,16 @@
 \name{dataLine}
 \alias{dataLine}
 \title{A Dummy Data for Line Charts}
-\format{A data frame with 144 observations on the following 5 variables.
+\format{
+A data frame with 144 observations on the following 5 variables.
   \describe{
     \item{\code{date}}{date}
     \item{\code{group}}{a measurement group (has three groups "T", "H", and "L")}
     \item{\code{marker}}{a biomarker level (has two groups "High", and "Low")}
     \item{\code{sex}}{sex}
     \item{\code{y}}{a measurement variable}
-  }}
+  }
+}
 \description{
 A Dummy Data for Line Charts
 }

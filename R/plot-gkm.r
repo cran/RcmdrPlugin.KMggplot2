@@ -523,8 +523,8 @@ gkm <- setRefClass(
 
       if (parms$confInt == "1") {
         geom <- paste0(
-          "geom_step(data = subset(.fit, !is.na(upper)), aes(y = upper), size = 1, lty = 2, alpha = 0.5, show.legend = FALSE, na.rm = FALSE) + \n  ",
-          "geom_step(data = subset(.fit, !is.na(lower)), aes(y = lower), size = 1, lty = 2, alpha = 0.5, show.legend = FALSE, na.rm = FALSE) + \n  "
+          "geom_step(data = subset(.fit, !is.na(upper)), aes(y = upper), linewidth = 1, linetype = 2, alpha = 0.5, show.legend = FALSE, na.rm = FALSE) + \n  ",
+          "geom_step(data = subset(.fit, !is.na(lower)), aes(y = lower), linewidth = 1, linetype = 2, alpha = 0.5, show.legend = FALSE, na.rm = FALSE) + \n  "
         )
       } else {
         geom <- ""
@@ -537,7 +537,7 @@ gkm <- setRefClass(
         )
       }
       
-      geom <- paste0(geom, "geom_step(size = 1.5) + \n  ")
+      geom <- paste0(geom, "geom_step(linewidth = 1.5) + \n  ")
 
       if (nrow(.cens) > 0) {
         if (parms$dotCensor == "1") {
@@ -549,7 +549,7 @@ gkm <- setRefClass(
         } else {
           geom <- paste0(
             geom,
-            "geom_linerange(data = .cens, aes(x = x, ymin = y, ymax = y + 0.02), size = 1.5) + \n  "
+            "geom_linerange(data = .cens, aes(x = x, ymin = y, ymax = y + 0.02), linewidth = 1.5) + \n  "
           )
         }
       }
@@ -571,7 +571,7 @@ gkm <- setRefClass(
       if (parms$refMedian == "1" && !all(is.infinite(.med$median))) {
         geom <- paste0(
           geom,
-          "geom_vline(data = .med, aes(xintercept = median), colour = \"black\", lty = 2) + \n  "
+          "geom_vline(data = .med, aes(xintercept = median), colour = \"black\", linetype = 2) + \n  "
         )
       } else if (parms$refMedian == "1" && all(is.infinite(.med$median))) {
         Message(message = gettextKmg2("Median survival times did not exist."),

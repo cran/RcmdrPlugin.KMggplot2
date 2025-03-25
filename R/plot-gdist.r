@@ -209,11 +209,11 @@ gdist <- setRefClass(
     getGeom = function(parms) {
       
       if (distType == "continuous") {
-        geom <- "geom_line(size = 1.5) + \n  "
+        geom <- "geom_line(linewidth = 1.5) + \n  "
       } else if (distType == "discrete" && parms$funcType == "1") {
         geom <- "geom_bar(stat = \"identity\") + \n  "
       } else {
-        geom <- "geom_step(size = 1.5) + \n  "
+        geom <- "geom_step(linewidth = 1.5) + \n  "
       }
       geom
 

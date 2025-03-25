@@ -4,7 +4,8 @@
 \name{dataKm}
 \alias{dataKm}
 \title{A Dummy Data for Survival Analysis}
-\format{A data frame with 200 observations on the following 8 variables.
+\format{
+A data frame with 200 observations on the following 8 variables.
   \describe{
     \item{\code{time}}{time from entry (months)}
     \item{\code{age}}{age}
@@ -14,7 +15,8 @@
     \item{\code{trt}}{treatment group (has three groups "Group-A", "Group-B", and "Group-C")}
     \item{\code{marker}}{a biomarker level (has two groups "High", and "Low")}
     \item{\code{sex}}{sex}
-  }}
+  }
+}
 \description{
 A Dummy Data for Survival Analysis
 }

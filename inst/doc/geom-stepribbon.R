@@ -1,4 +1,4 @@
-## ---- echo = TRUE, fig.width = 7, fig.height = 7-------------------------
+## ----echo = TRUE, fig.width = 7, fig.height = 7-------------------------------
 require("ggplot2")
 
 huron <- data.frame(year = 1875:1972, level = as.vector(LakeHuron))

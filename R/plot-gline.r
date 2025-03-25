@@ -294,25 +294,25 @@ gline <- setRefClass(
 
       if (parms$summaryType == "1") {
         if (parms$plotType == "1") {
-          geom <- "geom_point() + \n  geom_line(size = 1) + \n  "
+          geom <- "geom_point() + \n  geom_line(linewidth = 1) + \n  "
         } else if (parms$plotType == "2") {
-          geom <- "geom_point() + \n  geom_step(size = 1) + \n  "
+          geom <- "geom_point() + \n  geom_step(linewidth = 1) + \n  "
         } else {
           geom <- "geom_area(alpha = 0.3) + \n  "
         }
       } else if (parms$summaryType == "2") {
         if (parms$plotType == "1") {
-          geom <- "stat_summary(fun.y = \"mean\", geom = \"point\") + \n  stat_summary(fun.y = \"mean\", geom = \"line\", size = 1) + \n  "
+          geom <- "stat_summary(fun.y = \"mean\", geom = \"point\") + \n  stat_summary(fun.y = \"mean\", geom = \"line\", linewidth = 1) + \n  "
         } else if (parms$plotType == "2") {
-          geom <- "stat_summary(fun.y = \"mean\", geom = \"point\") + \n  stat_summary(fun.y = \"mean\", geom = \"step\", size = 1) + \n  "
+          geom <- "stat_summary(fun.y = \"mean\", geom = \"point\") + \n  stat_summary(fun.y = \"mean\", geom = \"step\", linewidth = 1) + \n  "
         } else {
           geom <- "stat_summary(fun.y = \"mean\", geom = \"area\", alpha = 0.3) + \n  "
         }
       } else {
         if (parms$plotType == "1") {
-          geom <- "stat_summary(fun.y = \"sum\", geom = \"point\") + \n  stat_summary(fun.y = \"sum\", geom = \"line\", size = 1) + \n  "
+          geom <- "stat_summary(fun.y = \"sum\", geom = \"point\") + \n  stat_summary(fun.y = \"sum\", geom = \"line\", linewidth = 1) + \n  "
         } else if (parms$plotType == "2") {
-          geom <- "stat_summary(fun.y = \"sum\", geom = \"point\") + \n  stat_summary(fun.y = \"sum\", geom = \"step\", size = 1) + \n  "
+          geom <- "stat_summary(fun.y = \"sum\", geom = \"point\") + \n  stat_summary(fun.y = \"sum\", geom = \"step\", linewidth = 1) + \n  "
         } else {
           geom <- "stat_summary(fun.y = \"sum\", geom = \"area\", alpha = 0.3) + \n  "
         }

@@ -4,12 +4,14 @@
 \name{dataContour}
 \alias{dataContour}
 \title{A Dummy Data for Contour Plots}
-\format{A data frame with 10000 observations on the following 3 variables.
+\format{
+A data frame with 10000 observations on the following 3 variables.
   \describe{
     \item{\code{x}}{a x-axis variable}
     \item{\code{y}}{a y-axis variable}
     \item{\code{z}}{density}
-  }}
+  }
+}
 \description{
 A Dummy Data for Contour Plots
 }

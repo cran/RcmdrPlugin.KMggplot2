@@ -230,7 +230,7 @@ plot_base <- setRefClass(
     registRmlist = function(object) {
       
       txtObjects <- deparse(substitute(object))
-      if (class(rmlist) == "uninitializedField") {
+      if (is(rmlist, "uninitializedField")) {
         rmlist <<- list(txtObjects)
       } else {
         rmlist <<- unique(c(rmlist, txtObjects))
@@ -242,7 +242,7 @@ plot_base <- setRefClass(
     # Remove \code{rm()} List
     removeRmlist = function() {
       
-      if (class(rmlist) != "uninitializedField") {
+      if (!is(rmlist, "uninitializedField")) {
         command <- do.call(paste, c(rmlist, sep=", "))
         command <- paste0("rm(", command, ")")
         commandDoIt(command)

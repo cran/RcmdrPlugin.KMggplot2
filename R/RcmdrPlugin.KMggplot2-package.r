@@ -13,11 +13,10 @@
 #' \code{\link[scales:scales]{scales}}
 #'
 #' @name RcmdrPlugin.KMggplot2-package
-#' @rdname package-RcmdrPlugin.KMggplot2
+#' @rdname RcmdrPlugin.KMggplot2-package
 #' @aliases RcmdrPlugin.KMggplot2 KMggplot2
-#' @docType package
 #' @keywords hplot package
 #' @import stats
 #' @import methods
 #' @import Rcmdr
-NULL
+"_PACKAGE"

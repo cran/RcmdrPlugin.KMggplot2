@@ -34,19 +34,20 @@ NULL
 }
 
 \seealso{
-Other guiparts: \code{\link{back,gparts_base-method}},
-  \code{\link{checkboxes-class}},
-  \code{\link{front,checkboxes-method}},
-  \code{\link{front,radioboxes-method}},
-  \code{\link{front,textfield-method}},
-  \code{\link{front,textfields-method}},
-  \code{\link{front,toolbox-method}},
-  \code{\link{front,variableboxes-method}},
-  \code{\link{radioboxes-class}},
-  \code{\link{textfield-class}},
-  \code{\link{textfields-class}},
-  \code{\link{toolbox-class}},
-  \code{\link{variableboxes-class}}
+Other guiparts: 
+\code{\link{back,gparts_base-method}},
+\code{\link{checkboxes-class}},
+\code{\link{front,checkboxes-method}},
+\code{\link{front,radioboxes-method}},
+\code{\link{front,textfield-method}},
+\code{\link{front,textfields-method}},
+\code{\link{front,toolbox-method}},
+\code{\link{front,variableboxes-method}},
+\code{\link{radioboxes-class}},
+\code{\link{textfield-class}},
+\code{\link{textfields-class}},
+\code{\link{toolbox-class}},
+\code{\link{variableboxes-class}}
 }
 \concept{guiparts}
 \keyword{hplot}
